@@ -1,0 +1,19 @@
+version: "2"
+services:
+  adguardhome:
+    image: adguard/adguardhome:latest
+    container_name: adguardhome
+    labels:
+      - "diun.enable=true"
+    network_mode: npm1_default
+    ports:
+      - 53:53/tcp
+      - 53:53/udp
+      - 784:784/udp
+      - 853:853/tcp
+      - 3555:3000/tcp
+      - 4430:443/tcp
+    volumes:
+      - /docker/adguardhome/workdir:/opt/adguardhome/work
+      - /docker/adguardhome/confdir:/opt/adguardhome/conf
+    restart: unless-stopped
