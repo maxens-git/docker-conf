@@ -2,7 +2,7 @@ version: '3.2'
 services:
   Backup-Portainer:
     container_name: Backup
-    image: 
+    image: maxens-git/backup:1.0.0
     hostname: portainer-backup
     restart: unless-stopped
     command: schedule
