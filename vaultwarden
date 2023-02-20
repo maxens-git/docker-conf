@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+    server:
+        container_name: bitwarden
+        network_mode: npm1_default #Si nginx proxy manager est installé
+        volumes:
+            - /docker/vaultwarden:/data/
+        ports:
+            - '5001:80'
+        image: 'vaultwarden/server:latest'
+        restart: always
+        environment:
+            - WEBSOCKET_ENABLED=true
+            #- SIGNUPS_ALLOWED=True #True pour le premier démarrage
