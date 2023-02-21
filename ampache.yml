@@ -1,0 +1,10 @@
+version: '3.3'
+services:
+    ampache:
+        container_name: ampache
+        network_mode: npm_default #Si nginx proxy manager est installé
+        volumes:
+            - '/home/maxens/ampache:/media:ro'
+        ports:
+            - '5012:80'
+        image: 'ampache/ampache:latest'
