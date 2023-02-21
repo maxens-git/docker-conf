@@ -4,7 +4,7 @@ services:
         container_name: bitwarden
         labels:
             - diun.enable=true
-        network_mode: npm1_default #Si nginx proxy manager est installé
+        network_mode: nginx-proxy-manager_default #Si nginx proxy manager est installé
         volumes:
             - /docker/vaultwarden:/data/
         ports:
