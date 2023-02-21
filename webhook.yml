@@ -2,7 +2,7 @@ version: "2.1"
 services:
   webhook:
     image: roxedus/webhook
-    network_mode: npm1_default
+    network_mode: nginx-proxy-manager_default
     labels:
       - diun.enable=true
     container_name: webhook
