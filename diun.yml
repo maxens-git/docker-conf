@@ -1,0 +1,23 @@
+version: "2.4"
+
+services:
+  diun:
+    image: crazymax/diun
+    container_name: diun
+    hostname: diun_dockerhost1
+    volumes:
+      - /docker/diun:/data
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      - TZ=Europe/Paris
+      - LOG_LEVEL=info
+      - DIUN_DB_PATH=/data/diun.db
+      - DIUN_WATCH_WORKERS=10
+      - DIUN_WATCH_SCHEDULE=* * * * *
+      - DIUN_WATCH_FIRSTCHECKNOTIF=true
+      - DIUN_PROVIDERS_DOCKER_WATCHBYDEFAULT=false
+      - DIUN_NOTIF_TELEGRAM_TOKEN=REDACTED_BOT_TOKEN
+      - DIUN_NOTIF_TELEGRAM_CHATIDS=1334279113
+    restart: unless-stopped
+    labels:
+     - diun.enable=true
