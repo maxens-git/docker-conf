@@ -17,3 +17,5 @@ services:
       - /docker/adguardhome/workdir:/opt/adguardhome/work
       - /docker/adguardhome/confdir:/opt/adguardhome/conf
     restart: unless-stopped
+
+#Si doh activé : acceder au panneau de controle via https://adguardhome:443 dans npm
