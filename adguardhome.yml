@@ -5,7 +5,7 @@ services:
     container_name: adguardhome
     labels:
       - "diun.enable=true"
-    network_mode: npm1_default
+    network_mode: nginx-proxy-manager_default
     ports:
       - 53:53/tcp
       - 53:53/udp
