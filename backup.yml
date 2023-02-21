@@ -13,7 +13,7 @@ services:
       TZ: Europe/Paris #set local timezone using TZ database name standard as seen - https://manpages.ubuntu.com/manpages/bionic/man3/DateTime::TimeZone::Catalog.3pm.html
       PORTAINER_BACKUP_URL: "https://portainer.maxens.tech"
       PORTAINER_BACKUP_TOKEN: "REDACTED_TOKEN"
-      PORTAINER_BACKUP_SCHEDULE: "0 0 0 * * *"
+      PORTAINER_BACKUP_SCHEDULE: "0 0 * * *"
     volumes:
       - /docker/npm:/data/npm
       - /docker/vaultwarden:/data/vaultwarden
