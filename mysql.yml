@@ -9,7 +9,7 @@ services:
     network_mode: nginx-proxy-manager_default
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: notSecureChangeMe
+      MYSQL_ROOT_PASSWORD: REDACTED_PASSWORD
 
   phpmyadmin:
     image: phpmyadmin
