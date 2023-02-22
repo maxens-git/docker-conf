@@ -1,0 +1,24 @@
+version: '3.1'
+
+services:
+  db:
+    image: mariadb:10.6
+    container_name: mariadb
+    labels:
+      - "diun.enable=true"
+    network_mode: nginx-proxy-manager_default
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: notSecureChangeMe
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmyadmin
+    labels:
+      - "diun.enable=true"
+    network_mode: nginx-proxy-manager_default
+    restart: always
+    ports:
+      - 9015:80
+    environment:
+      - PMA_ARBITRARY=1
