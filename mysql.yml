@@ -23,5 +23,5 @@ services:
     environment:
       - PMA_ARBITRARY=0 #1 pour se connecter a une base de donnée externe
       - PMA_HOST=mariadb
-      - UPLOAD_LIMIT = 100M
+      - UPLOAD_LIMIT = 4096 K
       - MAX_EXECUTION_TIME = 1000
