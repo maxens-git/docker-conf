@@ -21,4 +21,5 @@ services:
     ports:
       - 9015:80
     environment:
-      - PMA_ARBITRARY=1
+      - PMA_ARBITRARY=0
+      - PMA_HOST=mariadb
