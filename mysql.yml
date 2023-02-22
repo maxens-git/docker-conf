@@ -21,5 +21,7 @@ services:
     ports:
       - 9015:80
     environment:
-      - PMA_ARBITRARY=0
+      - PMA_ARBITRARY=0 #1 pour se connecter a une base de donnée externe
       - PMA_HOST=mariadb
+      - UPLOAD_LIMIT = 100M
+      - MAX_EXECUTION_TIME = 1000
