@@ -2,7 +2,9 @@ version: '3.3'
 services:
     ampache:
         container_name: ampache
-        network_mode: npm_default #Si nginx proxy manager est installé
+        labels:
+            - "diun.enable=true"
+        network_mode: nginx-proxy-manager_default
         volumes:
             - '/home/maxens/ampache:/media:ro'
         ports:
