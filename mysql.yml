@@ -3,7 +3,7 @@ version: '3.1'
 services:
   db:
     #image: mariadb:10.6
-    image: mysql:8.0
+    image: mysql:latest
     container_name: mysql
     labels:
       - "diun.enable=true"
@@ -11,11 +11,13 @@ services:
     restart: always
     ports:
       - 3306:3306
+    volumes:
+      - /docker/mysql/:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: REDACTED_PASSWORD
 
   phpmyadmin:
-    image: phpmyadmin
+    image: phpmyadmin:latest
     container_name: phpmyadmin
     labels:
       - "diun.enable=true"
