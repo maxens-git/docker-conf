@@ -13,4 +13,5 @@ services:
         restart: always
         environment:
             - WEBSOCKET_ENABLED=true
+            - DOMAIN=https://bitwarden.maxens.tech
             #- SIGNUPS_ALLOWED=True #True pour le premier démarrage
