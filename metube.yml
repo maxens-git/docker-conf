@@ -10,5 +10,5 @@ services:
     ports:
       - "8081:8081"
     volumes:
-      #- /docker/youtube/downloads:/downloads
-      - /docker/jellyfin/movies:/downloads
+      - /docker/youtube/downloads:/downloads
+      #- /docker/jellyfin/movies:/downloads
