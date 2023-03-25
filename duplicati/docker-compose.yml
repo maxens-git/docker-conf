@@ -3,6 +3,9 @@ services:
   duplicati:
     image: lscr.io/linuxserver/duplicati
     container_name: duplicati
+    labels:
+      - "diun.enable=true"
+    network_mode: nginx-proxy-manager_default
     environment:
       - PUID=1000
       - PGID=1000
