@@ -21,3 +21,5 @@ services:
     restart: unless-stopped
     labels:
      - diun.enable=true
+    templateBody: |
+      Docker tag {{ .Entry.Image }} which you subscribed to through {{ .Entry.Provider }} provider has been released.
