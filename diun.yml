@@ -18,8 +18,8 @@ services:
       - DIUN_PROVIDERS_DOCKER_WATCHBYDEFAULT=false
       - DIUN_NOTIF_TELEGRAM_TOKEN=REDACTED_BOT_TOKEN
       - DIUN_NOTIF_TELEGRAM_CHATIDS=1334279113
+      - DIUN_NOTIF_TELEGRAM_TEMPLATEBODY=Docker tag {{ .Entry.Image }} which you subscribed to through {{ .Entry.Provider }} provider has been released.
     restart: unless-stopped
     labels:
      - diun.enable=true
-    templateBody: |
-      Docker tag {{ .Entry.Image }} which you subscribed to through {{ .Entry.Provider }} provider has been released.
+      
