@@ -9,4 +9,4 @@ services:
         ports:
             - '25565:25565'
         container_name: minecraft-spigot
-        image: itzg/minecraft-serve
+        image: itzg/minecraft-server
