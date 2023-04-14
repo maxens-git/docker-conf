@@ -6,7 +6,7 @@ services:
         environment:
             - TYPE=SPIGOT
             - EULA=TRUE
-            #- VERSION=1.17.1
+            - VERSION=1.19.4
             #- MODE=survival
             #- MEMORY=1G
             - MAX_PLAYERS=50
