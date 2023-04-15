@@ -8,8 +8,10 @@ services:
             - EULA=TRUE
             - VERSION=1.19.4
             #- MODE=survival
+            #- EXEC_DIRECTLY=true
             #- MEMORY=1G
             - MAX_PLAYERS=50
+            #- ONLINE_MODE=true
         ports:
             - '25565:25565'
         container_name: minecraft-spigot
