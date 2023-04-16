@@ -25,7 +25,7 @@ services:
             # is referring to the hostname of 'mc' compose service below
             RWA_RCON_HOST: minecraft-serve
             # needs to match the password configured for the container, which is 'minecraft' by default
-            RWA_RCON_PASSWORD: REDACTED_PASSWORD
+            RWA_RCON_PASSWORD: ${rcron_pass}
         ports:
             - 4326:4326
             - 4327:4327
