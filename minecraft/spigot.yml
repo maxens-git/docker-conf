@@ -1,6 +1,6 @@
 version: '3.3'
 services:
-      minecraft-serve:
+     minecraft-serve:
         volumes:
             - '/docker/minecraft-spigot/:/data'
         environment:
