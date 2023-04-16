@@ -7,14 +7,14 @@ services:
             RWA_PASSWORD: admin
             RWA_ADMIN: "TRUE"
             # is referring to the hostname of 'mc' compose service below
-            RWA_RCON_HOST: minecraft-spigot
+            RWA_RCON_HOST: minecraft-serve
             # needs to match the password configured for the container, which is 'minecraft' by default
             RWA_RCON_PASSWORD: minecraft
         ports:
             - 4326:4326
             - 4327:4327
       
-    minecraft-spigot:
+    minecraft-serve:
         volumes:
             - '/docker/minecraft-spigot/:/data'
         environment:
