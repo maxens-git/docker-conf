@@ -12,6 +12,9 @@ services:
             #- MEMORY=1G
             - MAX_PLAYERS=50
             #- ONLINE_MODE=true
+            #RCON
+            - ENABLE_RCON=true
+            - RCON_PASSWORD=${rcron_pass}
         ports:
             - '25565:25565'
         container_name: minecraft-spigot
