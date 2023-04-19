@@ -8,10 +8,10 @@ services:
             - EULA=TRUE
             - VERSION=1.19.4
             #- MODE=survival
-            #- EXEC_DIRECTLY=true
-            #- MEMORY=1G
+            - EXEC_DIRECTLY=true
+            - MEMORY=4G
             - MAX_PLAYERS=50
-            - ONLINE_MODE=false
+            - ONLINE_MODE=true
             #RCON
             - ENABLE_RCON=true
             - RCON_PASSWORD=${rcron_pass}
