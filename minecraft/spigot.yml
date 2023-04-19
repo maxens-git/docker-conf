@@ -11,7 +11,7 @@ services:
             #- EXEC_DIRECTLY=true
             #- MEMORY=1G
             - MAX_PLAYERS=50
-            #- ONLINE_MODE=true
+            - ONLINE_MODE=false
             #RCON
             - ENABLE_RCON=true
             - RCON_PASSWORD=${rcron_pass}
