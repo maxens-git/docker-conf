@@ -1,5 +1,12 @@
 version: '3.3'
 services:
+     web-ui:
+        ports:
+            - '8300:80'
+        restart: always
+        container_name: minecraft-spigot-web-ui
+        image: ghcr.io/maxens-git/rcon-web-ui:2.5
+        
      minecraft-serve:
         volumes:
             - '/docker/minecraft-spigot/:/data'
