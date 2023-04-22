@@ -13,15 +13,15 @@ services:
         environment:
             - TYPE=SPIGOT
             - EULA=TRUE
-            - VERSION=1.19.4
+            - VERSION=${version}
             #- MODE=survival
             - EXEC_DIRECTLY=true
-            - MEMORY=4G
+            - MEMORY=${memory}
             - MAX_PLAYERS=50
-            - ONLINE_MODE=true
+            - ONLINE_MODE=${premium_only}
             #RCON
-            - ENABLE_RCON=false
-            - RCON_PASSWORD=${rcron_pass}
+            - ENABLE_RCON=${rcon_enable}
+            - RCON_PASSWORD=${rcon_pass}
         ports:
             - '25565:25565'
             - '8123:8123'
