@@ -1,5 +1,12 @@
 version: '3.3'
 services:
+     web-ui:
+        ports:
+            - '8300:80'
+        restart: always
+        container_name: minecraft-spigot-web-ui
+        image: ghcr.io/maxens-git/rcon-web-ui:2.5
+        
      minecraft-serve:
         volumes:
             - '/docker/minecraft-spigot/:/data'
@@ -13,7 +20,7 @@ services:
             - MAX_PLAYERS=50
             - ONLINE_MODE=true
             #RCON
-            - ENABLE_RCON=true
+            - ENABLE_RCON=false
             - RCON_PASSWORD=${rcron_pass}
         ports:
             - '25565:25565'
