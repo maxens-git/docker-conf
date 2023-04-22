@@ -5,7 +5,7 @@ services:
             - '8300:80'
         restart: always
         container_name: minecraft-spigot-web-ui
-        image: ghcr.io/maxens-git/rcon-web-ui:2.5
+        image: ghcr.io/maxens-git/rcon-web-ui:2.5.1
         
      minecraft-serve:
         volumes:
