@@ -12,6 +12,6 @@ services:
         image: 'vaultwarden/server:latest'
         restart: always
         environment:
-            - WEBSOCKET_ENABLED=true
-            - DOMAIN=https://bitwarden.maxens.tech
-            #- SIGNUPS_ALLOWED=True #True pour le premier démarrage
+            - WEBSOCKET_ENABLED=${WEBSOCKET_ENABLED}
+            - DOMAIN=${DOMAIN}
+            - SIGNUPS_ALLOWED={SIGNUPS_ALLOWED} #True pour le premier démarrage
