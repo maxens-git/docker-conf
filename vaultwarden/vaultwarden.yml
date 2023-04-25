@@ -14,4 +14,4 @@ services:
         environment:
             - WEBSOCKET_ENABLED=${WEBSOCKET_ENABLED}
             - DOMAIN=${DOMAIN}
-            - SIGNUPS_ALLOWED={SIGNUPS_ALLOWED} #True pour le premier démarrage
+            #- SIGNUPS_ALLOWED={SIGNUPS_ALLOWED} #True pour le premier démarrage
