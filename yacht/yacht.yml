@@ -7,3 +7,7 @@ services:
             - '/var/run/docker.sock:/var/run/docker.sock'
             - '/docker/yacht:/config'
         image: selfhostedpro/yacht
+        container_name: yacht
+        labels:
+            - "diun.enable=true"
+        network_mode: nginx-proxy-manager_default
