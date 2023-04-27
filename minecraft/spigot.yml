@@ -4,6 +4,7 @@ services:
         volumes:
             - '/docker/minecraft-spigot/:/data'
         environment:
+            - TZ=Europe/Paris
             - TYPE=SPIGOT
             - EULA=TRUE
             - VERSION=${version}
