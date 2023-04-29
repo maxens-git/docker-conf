@@ -7,7 +7,7 @@ services:
     labels:
       - diun.enable=true
     environment:
-      BACKUP_ENCRYPTION_KEY: "REDACTED_KEY"
+      BACKUP_ENCRYPTION_KEY: ${BACKUP_ENCRYPTION_KEY}
       TZ: Europe/Paris #set local timezone using TZ database name standard as seen - https://manpages.ubuntu.com/manpages/bionic/man3/DateTime::TimeZone::Catalog.3pm.html
     volumes:
       - /docker:/docker
