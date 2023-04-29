@@ -20,5 +20,6 @@ services:
             #- '8123:8123' dynmap
             #- '8085:8085' webui
         container_name: minecraft-spigot
+        network_mode: nginx-proxy-manager_default
         image: itzg/minecraft-server
 
