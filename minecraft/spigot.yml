@@ -16,7 +16,7 @@ services:
             - ENABLE_RCON=${rcon_enable}
             - RCON_PASSWORD=${rcon_pass}
         ports:
-            - '25565:25565'
+            - '25570:25565'
             #- '8123:8123' dynmap
             #- '8085:8085' webui
         container_name: minecraft-spigot
