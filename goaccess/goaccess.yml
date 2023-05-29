@@ -5,7 +5,7 @@ services:
         container_name: goaccess
         labels:
             - "diun.enable=true"
-        network_mode: nginx-proxy-manager_default
+        #network_mode: nginx-proxy-manager_default
         restart: always
         ports:
             - '7880:7880'
