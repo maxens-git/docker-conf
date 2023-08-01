@@ -3,6 +3,7 @@ services:
      minecraft-serve:
         volumes:
             - '/docker/minecraft-spigot/:/data'
+        restart: unless-stopped
         environment:
             - TYPE=SPIGOT
             - EULA=TRUE
@@ -13,8 +14,8 @@ services:
             - MAX_PLAYERS=50
             - ONLINE_MODE=${premium_only}
             #RCON
-            - ENABLE_RCON=${rcon_enable}
-            - RCON_PASSWORD=${rcon_pass}
+            #- ENABLE_RCON=${rcon_enable}
+            #- RCON_PASSWORD=${rcon_pass}
         ports:
             - '25565:25565'
             #- '8123:8123' dynmap
