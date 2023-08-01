@@ -18,7 +18,7 @@ services:
       - DIUN_PROVIDERS_DOCKER_WATCHBYDEFAULT=true
 
       #DISCORD
-      - DIUN_NOTIF_DISCORD_WEBHOOKURL=https://discord.com/api/webhooks/REDACTED_WEBHOOK
+      - DIUN_NOTIF_DISCORD_WEBHOOKURL=
       
       #MAIL
       #- DIUN_NOTIF_MAIL_HOST=mail.gmx.com
