@@ -1,0 +1,12 @@
+version: '3'
+services:
+  kuma:
+    image: 'louislam/uptime-kuma:latest'
+    container_name: uptime-kuma
+    restart: unless-stopped
+    network_mode: nginx-proxy-manager_default
+    ports:
+      - '8050:3001'
+    volumes:
+      - '/docker/uptimekuma:/app/data'
+      - '/var/run/docker.sock:/var/run/docker.sock'
