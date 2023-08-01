@@ -16,13 +16,19 @@ services:
       - DIUN_WATCH_SCHEDULE=0 0 * * *
       - DIUN_WATCH_FIRSTCHECKNOTIF=true
       - DIUN_PROVIDERS_DOCKER_WATCHBYDEFAULT=true
-      - DIUN_NOTIF_MAIL_HOST=mail.gmx.com
-      - DIUN_NOTIF_MAIL_PORT=587
-      - DIUN_NOTIF_MAIL_USERNAME=verron4@gmx.com
-      - DIUN_NOTIF_MAIL_PASSWORD=REDACTED_PASSWORD
-      - DIUN_NOTIF_MAIL_FROM=verron4@gmx.com
-      - DIUN_NOTIF_MAIL_TO=maxens.verron0@gmail.com
+
+      #DISCORD
+      -DIUN_NOTIF_DISCORD_WEBHOOKURL=https://discord.com/api/webhooks/REDACTED_WEBHOOK
       
+      #MAIL
+      #- DIUN_NOTIF_MAIL_HOST=mail.gmx.com
+      #- DIUN_NOTIF_MAIL_PORT=587
+      #- DIUN_NOTIF_MAIL_USERNAME=verron4@gmx.com
+      #- DIUN_NOTIF_MAIL_PASSWORD=REDACTED_PASSWORD
+      #- DIUN_NOTIF_MAIL_FROM=verron4@gmx.com
+      #- DIUN_NOTIF_MAIL_TO=maxens.verron0@gmail.com
+
+      #TELEGRAM
       #- DIUN_NOTIF_WEBHOOK_ENDPOINT=
       #- DIUN_NOTIF_WEBHOOK_METHOD=
       #- DIUN_NOTIF_WEBHOOK_HEADERS_<KEY>=
