@@ -1,0 +1,13 @@
+docker run \
+    --net=host \
+    -e TZ=Europe/Paris \
+    -v /docker/poste.io/data:/data \
+    -h "mail.maxens.live" \
+    -e "DISABLE_CLAMAV=TRUE" \
+    -e "DISABLE_RSPAMD=TRUE" \
+    --name "mailserver" \
+    -t analogic/poste.io
+
+
+    -e "HTTP_PORT=8080" \
+    -e "HTTPS_PORT=4433" \
