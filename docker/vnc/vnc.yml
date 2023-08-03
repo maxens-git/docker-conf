@@ -1,0 +1,11 @@
+version: '3.3'
+services:
+    vnc-desktop:
+        environment:
+            - USER=maxens
+            - RESOLUTION=1920x1080
+        ports:
+            - '5900:5900'
+        network_mode: nginx-proxy-manager_default
+        image: 'carlonluca/vnc-desktop:jammy-lxqt'
+        
