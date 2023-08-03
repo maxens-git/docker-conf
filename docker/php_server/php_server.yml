@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  webserver:
+    image: php:apache
+    network_mode: nginx-proxy-manager_default
+    container_name: php_server
+    ports:
+      - "8501:80"
+    volumes:
+      - /docker/php:/var/www/html
