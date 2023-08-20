@@ -1,0 +1,77 @@
+version: '3.7'
+services:
+  deluge:
+    image: linuxserver/deluge:latest
+    container_name: deluge
+    restart: unless-stopped
+    network_mode: "host"
+    ports:
+      - 8112:8112
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=Europe/Paris
+    volumes:
+      - ${PATH_CONFIG}/deluge/config:/config
+      - ${PATH_MEDIA}:/downloads
+
+  jackett:
+    image: linuxserver/jackett:latest
+    container_name: jackett
+    restart: unless-stopped
+    network_mode: "host"
+    ports:
+      - 9117:9117
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=Europe/Paris
+    volumes:
+      - ${PATH_CONFIG}/jackett/config:/config
+      - /etc/localtime:/etc/localtime:ro
+
+  sonarr:
+    image: linuxserver/sonarr:latest
+    container_name: sonarr
+    restart: unless-stopped
+    network_mode: "host"
+    ports:
+      - 8989:8989
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=Europe/Paris
+    volumes:
+      - ${PATH_CONFIG}/sonarr/config:/config
+      - ${PATH_MEDIA}:/data
+
+  radarr:
+    image: linuxserver/radarr:latest
+    container_name: radarr
+    restart: unless-stopped
+    network_mode: "host"
+    ports:
+      - 7878:7878
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=Europe/Paris
+    volumes:
+      - ${PATH_CONFIG}/radarr/config:/config
+      - ${PATH_MEDIA}:/data
+
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    network_mode: "host"
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=Europe/Paris
+      #- JELLYFIN_PublishedServerUrl=192.168.0.5 #optional
+    volumes:
+      - ${PATH_MEDIA}:/data
+      - ${PATH_CONFIG}/jellyfin/config:/config
+    ports:
+      - 8096:8096
+    restart: unless-stopped
