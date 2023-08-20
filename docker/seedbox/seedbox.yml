@@ -71,7 +71,7 @@ services:
       #- JELLYFIN_PublishedServerUrl=192.168.0.5 #optional
     volumes:
       - ${PATH_MEDIA}:/data
-      - ${PATH_CONFIG}/config:/config
+      - ${PATH_CONFIG}/jellyfin/config:/config
     ports:
       - 8096:8096
     restart: unless-stopped
