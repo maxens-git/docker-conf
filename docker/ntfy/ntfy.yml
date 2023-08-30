@@ -1,0 +1,17 @@
+version: "2.3"
+
+services:
+  ntfy:
+    image: binwiederhier/ntfy
+    container_name: ntfy
+    network_mode: nginx-proxy-manager_default
+    command:
+      - serve
+    environment:
+      - TZ=UTC    # optional: set desired timezone
+    user: 1001:1001 # optional: replace with your own user/group or uid/gid
+    volumes:
+      - /docker/ntfy/cache/ntfy:/var/cache/ntfy
+      - /docker/ntfy/etc/ntfy:/etc/ntfy
+    ports:
+      - 8560:80
