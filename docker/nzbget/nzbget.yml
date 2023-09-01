@@ -3,6 +3,7 @@ services:
   nzbget:
     image: lscr.io/linuxserver/nzbget:latest
     container_name: nzbget
+    network_mode: nginx-proxy-manager_default
     environment:
       - PUID=1000
       - PGID=1000
