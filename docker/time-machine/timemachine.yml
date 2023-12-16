@@ -1,0 +1,17 @@
+services:
+    timemachine:
+        restart: always
+        container_name: timemachine
+        network_mode: host
+        environment:
+            - TM_USERNAME=maxens
+            - TM_GROUPNAME=timemachine
+            - PASSWORD=motdepasse
+            - TM_UID=1000
+            - TM_GID=1000
+            - SET_PERMISSIONS=false
+            - VOLUME_SIZE_LIMIT=0
+        volumes:
+            - /docker/timemachine:/opt/timemachine
+        tmpfs: /run/samba
+        image: mbentley/timemachine:smb
