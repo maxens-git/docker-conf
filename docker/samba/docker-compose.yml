@@ -5,7 +5,7 @@ services:
     container_name: samba
     ports:
       - "139:139"
-      - "4450:445"
+      - "8121:445"
     volumes:
       - /docker/smb:/smb/
     command: >
