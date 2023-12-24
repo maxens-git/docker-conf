@@ -8,5 +8,5 @@ services:
         volumes:
             - '/home/maxens/ampache:/media:ro'
         ports:
-            - '5012:80'
+            - '8100:80'
         image: 'ampache/ampache:latest'
