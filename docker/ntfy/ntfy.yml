@@ -14,4 +14,4 @@ services:
       - /docker/ntfy/cache/ntfy:/var/cache/ntfy
       - /docker/ntfy/etc/ntfy:/etc/ntfy
     ports:
-      - 8560:80
+      - 8109:80
