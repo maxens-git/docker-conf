@@ -1,0 +1,16 @@
+version: '3'
+services:
+  smb:
+    image: dperson/samba
+    container_name: samba
+    ports:
+      - "139:139"
+      - "4450:445"
+    volumes:
+      - /docker/smb:/smb/
+    command: >
+      -u "maxens;REDACTED_PASSWORD"
+      -u "films;REDACTED_PASSWORD"
+      -s "maxens;/smb/maxens;no;no;no;maxens"
+      -s "films;/smb/films;no;no;no;films"
+    restart: always
