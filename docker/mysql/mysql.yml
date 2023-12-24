@@ -24,7 +24,7 @@ services:
     network_mode: nginx-proxy-manager_default
     restart: always
     ports:
-      - 9015:80
+      - 8107:80
     environment:
       - UPLOAD_LIMIT=512M
       - MAX_EXECUTION_TIME=10000
