@@ -16,5 +16,5 @@ services:
       - /docker/duplicati/backups:/backups
       - /docker:/source
     ports:
-      - 8200:8200
+      - 8102:8200
     restart: unless-stopped
