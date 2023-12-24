@@ -8,7 +8,7 @@ services:
         #network_mode: nginx-proxy-manager_default
         restart: always
         ports:
-            - '7880:7880'
+            - '8103:7880'
         environment:
             - TZ=Europe/Paris       
             - SKIP_ARCHIVED_LOGS=False #optional
