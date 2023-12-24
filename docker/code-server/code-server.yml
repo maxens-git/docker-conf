@@ -15,5 +15,5 @@ services:
     volumes:
       - /docker/code-server:/config
     ports:
-      - 8443:8443
+      - 8101:8443
     restart: unless-stopped
