@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  dlna:
+    image: vladgh/minidlna
+    container_name: minidlna
+    restart: always
+    volumes:
+      - /docker/smb/films:/media/movies
+    network_mode: host
+    environment:
+      MINIDLNA_MEDIA_DIR: /media
+      MINIDLNA_FRIENDLY_NAME: pc
