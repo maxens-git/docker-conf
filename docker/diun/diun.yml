@@ -16,8 +16,6 @@ services:
       - DIUN_WATCH_SCHEDULE=0 0 * * *
       - DIUN_WATCH_FIRSTCHECKNOTIF=true
       - DIUN_PROVIDERS_DOCKER_WATCHBYDEFAULT=true
-
-
       
       #NTFY
       - DIUN_NOTIF_NTFY_ENDPOINT=https://maxens-ntfy.duckdns.org
