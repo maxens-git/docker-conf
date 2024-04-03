@@ -1,17 +1,23 @@
-version: "2.3"
-
+version: '3'
 services:
   ntfy:
     image: binwiederhier/ntfy
+    restart: unless-stopped
     container_name: ntfy
     network_mode: nginx-proxy-manager_default
-    command:
-      - serve
     environment:
-      - TZ=UTC    # optional: set desired timezone
-    user: 1001:1001 # optional: replace with your own user/group or uid/gid
+      NTFY_BASE_URL: https://maxens-ntfy.duckdns.org
+      NTFY_CACHE_FILE: /var/lib/ntfy/cache.db
+      NTFY_AUTH_FILE: /var/lib/ntfy/auth.db
+      NTFY_AUTH_DEFAULT_ACCESS: deny-all
+      NTFY_BEHIND_PROXY: true
+      NTFY_ATTACHMENT_CACHE_DIR: /var/lib/ntfy/attachments
+      #NTFY_ENABLE_LOGIN: true
+      NTFY_UPSTREAM_BASE_URL: https://ntfy.sh #Ne pas changer l'adresse (notification ios)
+      NTFY_WEB_PUSH_FILE: /var/lib/ntfy/webpush.db
+
     volumes:
-      - /docker/ntfy/cache/ntfy:/var/cache/ntfy
-      - /docker/ntfy/etc/ntfy:/etc/ntfy
+      - /docker/ntfy/:/var/lib/ntfy
     ports:
-      - 8109:80
+      - 8560:80
+    command: serve
