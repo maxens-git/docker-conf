@@ -9,8 +9,8 @@ services:
     volumes:
       - /docker/smb:/smb/
     command: >
-      -u "maxens;REDACTED_PASSWORD"
-      -u "films;REDACTED_PASSWORD"
+      -u "maxens;czq4JEA.jkn4apx2aea"
+      -u "films;neh0yvx9xft@AWF7kna"
       -s "maxens;/smb/maxens;no;no;no;maxens"
       -s "films;/smb/films;no;no;no;films"
     restart: always
