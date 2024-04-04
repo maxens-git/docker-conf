@@ -16,7 +16,7 @@
     ]
   },
   "description": "Docker host metrics",
-  "editable": false,
+  "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
   "id": 3,
@@ -86,7 +86,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.0",
+      "pluginVersion": "10.4.1",
       "targets": [
         {
           "datasource": {
@@ -167,7 +167,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.0",
+      "pluginVersion": "10.4.1",
       "targets": [
         {
           "datasource": {
@@ -249,7 +249,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.0",
+      "pluginVersion": "10.4.1",
       "targets": [
         {
           "datasource": {
@@ -330,7 +330,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.0",
+      "pluginVersion": "10.4.1",
       "targets": [
         {
           "datasource": {
@@ -412,7 +412,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.0",
+      "pluginVersion": "10.4.1",
       "targets": [
         {
           "datasource": {
@@ -487,23 +487,25 @@
             "mean"
           ],
           "fields": "",
-          "values": false
+          "values": true
         },
         "showPercentChange": false,
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.0",
+      "pluginVersion": "10.4.1",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "PBFA97CFB590B2093"
           },
-          "expr": "sum(node_filesystem_free_bytes{fstype=\"aufs\"})",
+          "editorMode": "code",
+          "expr": "node_filesystem_avail_bytes{mountpoint=\"/\",fstype!=\"rootfs\"}",
           "interval": "30s",
           "intervalFactor": 1,
-          "legendFormat": "",
+          "legendFormat": "__auto",
+          "range": true,
           "refId": "A",
           "step": 30
         }
@@ -551,7 +553,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "10.4.0",
+      "pluginVersion": "10.4.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -648,7 +650,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "10.4.0",
+      "pluginVersion": "10.4.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -759,7 +761,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "10.4.0",
+      "pluginVersion": "10.4.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -859,7 +861,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "10.4.0",
+      "pluginVersion": "10.4.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -956,7 +958,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "10.4.0",
+      "pluginVersion": "10.4.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1061,6 +1063,8 @@
     {
       "aliasColors": {},
       "bars": false,
+      "dashLength": 10,
+      "dashes": false,
       "datasource": {
         "type": "prometheus",
         "uid": "PBFA97CFB590B2093"
@@ -1069,6 +1073,7 @@
       "editable": true,
       "error": false,
       "fill": 1,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
@@ -1076,6 +1081,7 @@
         "x": 0,
         "y": 21
       },
+      "hiddenSeries": false,
       "id": 7,
       "legend": {
         "alignAsTable": true,
@@ -1091,7 +1097,11 @@
       "lines": true,
       "linewidth": 2,
       "nullPointMode": "connected",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "10.4.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1109,6 +1119,7 @@
           "yaxis": 2
         }
       ],
+      "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
       "targets": [
@@ -1151,6 +1162,7 @@
         }
       ],
       "thresholds": [],
+      "timeRegions": [],
       "title": "I/O Usage",
       "tooltip": {
         "msResolution": true,
@@ -1160,7 +1172,9 @@
       },
       "type": "graph",
       "xaxis": {
-        "show": true
+        "mode": "time",
+        "show": true,
+        "values": []
       },
       "yaxes": [
         {
@@ -1174,11 +1188,16 @@
           "logBase": 1,
           "show": true
         }
-      ]
+      ],
+      "yaxis": {
+        "align": false
+      }
     },
     {
       "aliasColors": {},
       "bars": false,
+      "dashLength": 10,
+      "dashes": false,
       "datasource": {
         "type": "prometheus",
         "uid": "PBFA97CFB590B2093"
@@ -1187,6 +1206,7 @@
       "editable": true,
       "error": false,
       "fill": 4,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
@@ -1194,6 +1214,7 @@
         "x": 0,
         "y": 28
       },
+      "hiddenSeries": false,
       "id": 8,
       "legend": {
         "alignAsTable": true,
@@ -1209,11 +1230,16 @@
       "lines": true,
       "linewidth": 2,
       "nullPointMode": "connected",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "10.4.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
+      "spaceLength": 10,
       "stack": true,
       "steppedLine": false,
       "targets": [
@@ -1243,6 +1269,7 @@
         }
       ],
       "thresholds": [],
+      "timeRegions": [],
       "title": "Network Usage",
       "tooltip": {
         "msResolution": true,
@@ -1252,7 +1279,9 @@
       },
       "type": "graph",
       "xaxis": {
-        "show": true
+        "mode": "time",
+        "show": true,
+        "values": []
       },
       "yaxes": [
         {
@@ -1266,11 +1295,16 @@
           "logBase": 1,
           "show": false
         }
-      ]
+      ],
+      "yaxis": {
+        "align": false
+      }
     },
     {
       "aliasColors": {},
       "bars": false,
+      "dashLength": 10,
+      "dashes": false,
       "datasource": {
         "type": "prometheus",
         "uid": "PBFA97CFB590B2093"
@@ -1279,6 +1313,7 @@
       "editable": true,
       "error": false,
       "fill": 4,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
@@ -1286,6 +1321,7 @@
         "x": 0,
         "y": 35
       },
+      "hiddenSeries": false,
       "id": 14,
       "legend": {
         "alignAsTable": true,
@@ -1301,7 +1337,11 @@
       "lines": true,
       "linewidth": 2,
       "nullPointMode": "connected",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "10.4.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1315,6 +1355,7 @@
           "color": "#7EB26D"
         }
       ],
+      "spaceLength": 10,
       "stack": true,
       "steppedLine": false,
       "targets": [
@@ -1344,6 +1385,7 @@
         }
       ],
       "thresholds": [],
+      "timeRegions": [],
       "title": "Swap Usage",
       "tooltip": {
         "msResolution": true,
@@ -1353,7 +1395,9 @@
       },
       "type": "graph",
       "xaxis": {
-        "show": true
+        "mode": "time",
+        "show": true,
+        "values": []
       },
       "yaxes": [
         {
@@ -1367,11 +1411,16 @@
           "logBase": 1,
           "show": false
         }
-      ]
+      ],
+      "yaxis": {
+        "align": false
+      }
     },
     {
       "aliasColors": {},
       "bars": false,
+      "dashLength": 10,
+      "dashes": false,
       "datasource": {
         "type": "prometheus",
         "uid": "PBFA97CFB590B2093"
@@ -1380,6 +1429,7 @@
       "editable": true,
       "error": false,
       "fill": 1,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
@@ -1387,6 +1437,7 @@
         "x": 12,
         "y": 35
       },
+      "hiddenSeries": false,
       "id": 15,
       "legend": {
         "alignAsTable": true,
@@ -1401,11 +1452,16 @@
       "lines": true,
       "linewidth": 2,
       "nullPointMode": "connected",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "10.4.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
+      "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
       "targets": [
@@ -1435,6 +1491,7 @@
         }
       ],
       "thresholds": [],
+      "timeRegions": [],
       "title": "Swap I/O",
       "tooltip": {
         "msResolution": true,
@@ -1444,7 +1501,9 @@
       },
       "type": "graph",
       "xaxis": {
-        "show": true
+        "mode": "time",
+        "show": true,
+        "values": []
       },
       "yaxes": [
         {
@@ -1458,10 +1517,13 @@
           "logBase": 1,
           "show": false
         }
-      ]
+      ],
+      "yaxis": {
+        "align": false
+      }
     }
   ],
-  "refresh": "10s",
+  "refresh": "auto",
   "schemaVersion": 39,
   "tags": [
     "system"
@@ -1501,6 +1563,6 @@
   "timezone": "browser",
   "title": "Docker Host",
   "uid": "fdhqetl0fkglcc",
-  "version": 2,
+  "version": 4,
   "weekStart": ""
 }
