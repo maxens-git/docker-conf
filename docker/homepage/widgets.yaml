@@ -1,0 +1,21 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/service-widgets
+
+- resources:
+    label: System
+    cpu: true
+    cputemp: true
+    memory: true
+
+- resources:
+    label: Storage
+    expanded: true
+    diskUnits: bytes
+    disk:
+      - /
+      - /media/maxens/AISENS
+
+#- search:
+#    provider: duckduckgo
+#    target: _blank
