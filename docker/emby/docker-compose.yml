@@ -1,6 +1,7 @@
 services:
   emby:
     image: lscr.io/linuxserver/emby:latest
+    network_mode: nginx-proxy-manager_default
     container_name: emby
     environment:
       - PUID=1000
@@ -14,6 +15,8 @@ services:
     ports:
       - 8096:8096
       #- 8920:8920 #optional
+
+    #Pour Raspberry pi
     devices:
       - /dev/dri:/dev/dri #optional
       - /dev/vchiq:/dev/vchiq #optional
