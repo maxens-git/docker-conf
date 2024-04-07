@@ -1,6 +1,6 @@
 # Self hosting
 
-## Docker compose - nginx proxy manager network
+## Docker compose - npm network
 ```docker
   network_mode: nginx-proxy-manager_default
 ```
