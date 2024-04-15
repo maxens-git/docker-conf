@@ -1,32 +1,42 @@
 <?php
 
 // Récupérer la variable GET
-$variable = $_GET["variable"];
+$variable = $_GET["lien"];
 
 // Si la variable n'est pas définie, afficher un message d'erreur
 if (!isset($variable)) {
-    echo "Erreur : La variable GET 'variable' n'est pas définie.";
     exit;
 }
 
 // Remplacer la variable dans l'URL de la page web
-$url = "https://api.alldebrid.com/v4/link/unlock?agent=myAppName&apikey=someValidApikeyYouGenerated&link=" . $variable;
+$url = "https://api.alldebrid.com/v4/link/unlock?agent=php&apikey=REDACTED_API_KEY&link=" . $variable;
 
 // Obtenir le contenu de la page web
 $contenu = file_get_contents($url);
 
-// Décoder le contenu JSON
-$donnéesJSON = json_decode($contenu, true);
 
-// Vérifier si le décodage JSON a réussi
-if ($donnéesJSON === false) {
-    echo "Erreur : Le contenu de la page web n'est pas au format JSON.";
-    exit;
+// Déclaration de la fonction pour parser le JSON et extraire le lien
+function parse_api_response($api_response) {
+  // Décodage du JSON en objet PHP
+  $data = json_decode($api_response, true);
+
+  // Vérification du statut de la réponse
+  if ($data['status'] === 'success') {
+    // Extraction du lien depuis l'objet data
+    $lienp = $data['data']['link'];
+
+    // Retour du lien
+    return $lienp;
+  } else {
+    return null;
+  }
 }
 
-// Définir l'en-tête HTTP pour indiquer le format JSON
-header('Content-Type: application/json');
+$lienseul = parse_api_response($contenu);
 
-// Encoder les données en JSON et les afficher
-echo json_encode($donnéesJSON);
+if ($lienseul) {
+  header("Location: $lienseul");
+  die();
+}
+
 ?>
