@@ -2,15 +2,18 @@ services:
   plex:
     image: lscr.io/linuxserver/plex:latest
     container_name: plex
-    network_mode: host
+    network_mode: nginx-proxy-manager_default
+    ports:
+      - 32400:32400
     environment:
-      - PUID=1000
-      - PGID=1000
+      #- PUID=1000
+      #- PGID=1000
       - TZ=Etc/UTC
       - VERSION=docker
-      #- PLEX_CLAIM= #optional
+      - PLEX_CLAIM= #https://www.plex.tv/claim/
     volumes:
       - /docker/plex/library:/config
       - /docker/plex/tvseries:/tv
       - /docker/plex/movies:/movies
+      - /docker/plex/music:/music
     restart: unless-stopped
