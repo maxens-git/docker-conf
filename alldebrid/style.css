@@ -1,0 +1,8 @@
+body {
+  font-family: Arial, sans-serif;  /* Set a base font */
+  margin: 2rem;  /* Add some margin for spacing */
+}
+
+h1 {
+  text-align: center;  /* Center align the heading */
+}
