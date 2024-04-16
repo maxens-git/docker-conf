@@ -2,16 +2,64 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-hscale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Redirection avec paramètre GET</title>
-  <link rel="stylesheet" href="style.css">  </head>
+  <link rel="stylesheet" href="style.css"> <style>
+    /* Add modern and responsive styles here */
+    body {
+      font-family: Arial, sans-serif; /* Set a clean, modern font */
+      margin: 0; /* Remove default margin */
+      padding: 20px; /* Add some padding for aesthetics */
+    }
+
+    main {
+      display: flex; /* Make the form container flexible */
+      justify-content: center; /* Center the form horizontally */
+      align-items: center; /* Center the form vertically */
+      min-height: 100vh; /* Set minimum height for full viewport on some devices */
+    }
+
+    form {
+      background-color: #f0f0f0; /* Light background for better contrast */
+      border-radius: 5px; /* Add rounded corners */
+      padding: 15px; /* Add some padding within the form */
+      display: flex; /* Make the form elements arrange horizontally */
+    }
+
+    input[type="text"] {
+      flex: 1; /* Allow the input field to grow to fill available space */
+      padding: 10px; /* Add padding for better user experience */
+      border: 1px solid #ccc; /* Add a thin border */
+      border-radius: 3px; /* Add slight rounded corners */
+    }
+
+    button[type="submit"] {
+      background-color: #4CAF50; /* Green button color */
+      color: white; /* White text color */
+      padding: 10px 20px; /* Adjust padding for the button */
+      border: none; /* Remove default border */
+      border-radius: 3px; /* Add rounded corners */
+      cursor: pointer; /* Indicate clickable behavior */
+    }
+
+    @media only screen and (max-width: 768px) {
+      /* Mobile-specific styles */
+      form {
+        flex-direction: column; /* Stack form elements vertically on small screens */
+      }
+
+      input[type="text"],
+      button[type="submit"] {
+        width: 100%; /* Make form elements full width on mobile */
+      }
+    }
+  </style>
+</head>
 <body>
   <main>
-    <form action="lien.php" method="get">
-      <input type="text" id="lien" name="lien" required>
-      <button type="submit">Envoyer</button>
+    <form action="lien1.php" method="get">
+      <input type="text" id="lien" name="lien" required placeholder="Entrez l'URL ici"> <button type="submit">Envoyer</button>
     </form>
   </main>
-
-  </body>
+</body>
 </html>
