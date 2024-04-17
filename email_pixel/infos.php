@@ -4,6 +4,7 @@
 header('Content-Type: image/gif');
 readfile('tracking.gif');
 
+$adresse = $_GET["adresse"];
 
 //THIS IS THE SCRIPT FOR THE ACTUAL TRACKING
 $date = date('Y-m-d H:i:s', $_SERVER['REQUEST_TIME']);
@@ -17,7 +18,7 @@ $url = "https://maxens-ntfy.duckdns.org/Raspberry";
 
 // Data to send in the POST request (replace with your actual data)
 $data = array(
-  'content' => $txt
+  'content' => $txt . " " . $adresse
 );
 
 // Headers to include in the request (replace with your specific headers)
