@@ -2,5 +2,5 @@
 
 ## A insérer dans un email
 ```html
-  <img src="http://129.158.222.17:8111/tracker.php?image=tracking.gif" alt="">
+  <img src="http://129.158.222.17:8111/infos.php?image=tracking.gif" alt="">
 ```
