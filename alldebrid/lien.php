@@ -9,7 +9,7 @@ if (!isset($variable)) {
 }
 
 // Remplacer la variable dans l'URL de la page web
-$url = "https://api.alldebrid.com/v4/link/unlock?agent=php&apikey=ALLDEBRIDAPIKEY&link=" . $variable;
+$url = "https://api.alldebrid.com/v4/link/unlock?agent=php&apikey=REDACTED_API_KEY&link=" . $variable;
 
 // Obtenir le contenu de la page web
 $contenu = file_get_contents($url);
@@ -33,6 +33,11 @@ function parse_api_response($api_response) {
 }
 
 $lienseul = parse_api_response($contenu);
+
+
+$date = date('Y-m-d H:i:s', $_SERVER['REQUEST_TIME']);
+$vartxt = $date." , ". $lienseul;
+$myfile = file_put_contents('liens.txt', $vartxt.PHP_EOL , FILE_APPEND);
 
 if ($lienseul) {
   header("Location: $lienseul");
