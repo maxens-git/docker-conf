@@ -5,8 +5,8 @@ services:
     container_name: code-server
     network_mode: nginx-proxy-manager_default
     environment:
-      - PUID=1000
-      - PGID=1000
+      #- PUID=1000
+      #- PGID=1000
       - TZ=Etc/UTC
       - PASSWORD=REDACTED_PASSWORD #optional
       #- SUDO_PASSWORD= #optional
