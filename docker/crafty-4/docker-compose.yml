@@ -9,8 +9,8 @@ services:
     environment:
         - TZ=Etc/UTC
     ports:
-        - "8999:8000" # HTTP
-        #- "8443:8443" # HTTPS
+        #- "8999:8000" # HTTP
+        - "8449:8443" # HTTPS
         #- "8123:8123" # DYNMAP
         #- "19132:19132/udp" # BEDROCK
         - "25560:25565" # MC SERV PORT RANGE
@@ -19,5 +19,4 @@ services:
         - /docker/crafty/logs:/crafty/logs
         - /docker/crafty/servers:/crafty/servers
         - /docker/crafty/config:/crafty/app/config
-        - /docker/crafty/import:/crafty/import
-
+        - /docker/minecraft-spigot:/crafty/import
