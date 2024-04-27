@@ -9,7 +9,7 @@ services:
     environment:
         - TZ=Etc/UTC
     ports:
-        #- "8999:8000" # HTTP
+        - "8999:8000" # HTTP
         - "8449:8443" # HTTPS
         #- "8123:8123" # DYNMAP
         #- "19132:19132/udp" # BEDROCK
