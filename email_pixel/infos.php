@@ -14,7 +14,7 @@ $myfile = file_put_contents('log.txt', $txt.PHP_EOL , FILE_APPEND);
 
 
 // URL of the target server
-$url = "https://maxens-ntfy.duckdns.org/Raspberry";
+$url = "https://ntfy.maxens.org/Raspberry";
 
 // Data to send in the POST request (replace with your actual data)
 $data = array(
