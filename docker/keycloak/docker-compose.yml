@@ -1,0 +1,12 @@
+services:
+    keycloak:
+        container_name: keycloak
+        network_mode: nginx-proxy-manager_default
+        ports:
+            - 8080:8080
+        environment:
+            - KEYCLOAK_ADMIN=admin
+            - KEYCLOAK_ADMIN_PASSWORD=admin
+            - KC_HOSTNAME=auth.maxens.org
+        image: quay.io/keycloak/keycloak:latest
+        command: start --proxy=edge --optimized
