@@ -5,18 +5,23 @@
 ###############################################################################
 
 theme: dark #light/dark
-jwt_secret: REDACTED #any text or number you want to add here to create jwt Token
 
-default_redirection_url: https://google.com/ #where to redirect for a non-existent URL
+identity_validation:
+  reset_password:
+    jwt_secret: 'REDACTED_SECRET' #any text or number you want to add here to create jwt Token
+
+default_redirection_url: https://google.com #where to redirect for a non-existent URL
+
 
 server:
-  host: 0.0.0.0
-  port: 9091
-  path: ""
-  read_buffer_size: 4096
-  write_buffer_size: 4096
-  enable_pprof: false
-  enable_expvars: false
+  address: tcp://0.0.0.0:9091/
+
+  buffers:
+    read: 4096
+    write: 4096
+  endpoints:
+    enable_pprof: false
+    enable_expvars: false
   disable_healthcheck: false
   tls:
     key: ""
@@ -26,12 +31,13 @@ log:
   level: debug
 
 totp:
-  issuer: yourdomain.com #your authelia top-level domain
+  issuer: maxens.org #your authelia top-level domain
   period: 30
   skew: 1
 
 authentication_backend:
-  disable_reset_password: false
+  password_reset:
+    disable: false
   refresh_interval: 5m
   file:
     path: /config/users_database.yml #this is where your authorized users are stored
@@ -47,26 +53,18 @@ access_control:
   default_policy: deny
   rules:
     ## bypass rule
-    - domain: 
-        - "auth.yourdomain.com" #This should be your authentication URL
+    - domain:
+        - "auth.maxens.org" #This should be your authentication URL
       policy: bypass
-    - domain: "yourdomain.com" #example domain to protect
+    - domain: "uptime-kuma.maxens.org" #example domain to protect
       policy: one_factor
-    - domain: "sub1.yourdomain.com" #example subdomain to protect
-      policy: one_factor
-    - domain: "sub2.yourdomain.com" #example subdomain to protect
-      policy: one_factor
-    - domain: "*.yourdomain.com" #example to protect all subdomains under top-level domain
-      policy: one_factor
-      #add or remove additional subdomains as necessary. currenlty only supports ONE top-level domain
-      #any time you add a new subdomain, you will need to restart the Authelia container to recognize the new settings/rules
 
 session:
   name: authelia_session
-  secret: unsecure_session_secret #any text or number you want to add here to create jwt Token
+  secret: REDACTED_SECRET #any text or number you want to add here to create jwt Token
   expiration: 3600  # 1 hour
   inactivity: 300  # 5 minutes
-  domain: yourdomain.com  # Should match whatever your root protected domain is
+  domain: maxens.org  # Should match whatever your root protected domain is
 
 regulation:
   max_retries: 3
@@ -76,22 +74,109 @@ regulation:
 storage:
   local:
     path: /config/db.sqlite3 #this is your databse. You could use a mysql database if you wanted, but we're going to use this one.
-  encryption_key: you_must_generate_a_random_string_of_more_than_twenty_chars_and_configure_this #added Dec 5 2021
-  
+  encryption_key: REDACTED_KEY #added Dec 5 2021
+
+
 notifier:
-  disable_startup_check: true #true/false
-  smtp:
-    username: youremail@gmail.com #your email address
-    password: REDACTED_PASSWORD #your email password
-    host: smtp.gmail.com #email smtp server
-    port: 587 #email smtp port
-    sender: youremail@gmail.com
-    identifier: localhost
-    subject: "[Authelia] {title}" #email subject
-    startup_check_address: youremail@gmail.com
-    disable_require_tls: false
-    disable_html_emails: false
-    tls:
-      skip_verify: false
-      minimum_version: TLS1.2
+  disable_startup_check: false
+  filesystem:
+    filename: "/data/notification.txt"
+
+
+identity_providers:
+  oidc:
+    hmac_secret: 'REDACTED_HMAC_SECRET' #chaine de 64 caractères
+    jwks:
+      - key_id: 'maxens'
+        algorithm: 'RS256'
+        use: 'sig'
+        key: |
+          -----BEGIN PRIVATE KEY-----
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          -----END PRIVATE KEY-----
+        certificate_chain: |
+          -----BEGIN CERTIFICATE-----
+          MIIC5TCCAc2gAwIBAgIQHpTRsLa2yUFLwooNQhXjXjANBgkqhkiG9w0BAQsFADAT
+          MREwDwYDVQQKEwhBdXRoZWxpYTAeFw0yNDA0MzAxMzM3MTJaFw0yNTA0MzAxMzM3
+          MTJaMBMxETAPBgNVBAoTCEF1dGhlbGlhMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A
+          MIIBCgKCAQEA0bTW80b9lCuFIlK1SC0ExNw2kVotLt2n2wulP6UbBhi9BpZ4NuuJ
+          SxaDgD+TqzeNJTihjN5HFlM3IsT8RWvSi0Z2RqwngreV30zsNX9f71KUrZivAWkC
+          5Kiwv8n29mE8aq/n+Ted89f7xb/KtVymVIPbAqA7/qZ9ywkWhJLAxtM7PEMemsJE
+          R0+8k6XgEEO2r1gWsu2WA0Z1rxzpYHd8Q4YaioPCvA4AqLWiW7X3hVOu8lkbdWJQ
+          HQsv2pUX+SfNpqbLu/CmQbIR/2ZrOswpZZVlN7in8KBiNqNTdt9Ia/ihtdIv7nLp
+          KOORUqHVIoox+Qs/FmbwuE4HLeFR+8D68QIDAQABozUwMzAOBgNVHQ8BAf8EBAMC
+          BaAwEwYDVR0lBAwwCgYIKwYBBQUHAwEwDAYDVR0TAQH/BAIwADANBgkqhkiG9w0B
+          AQsFAAOCAQEAFihzFtJZJ6BXSbVbwgCODao/1U145vpKYrFdm23VV4WqorQT8bW7
+          2TC6b6Qkv6A4TBfvxq6CY8RtqEErSESgBR33CkXVrn1ctWs+iLqXK7aual9qzdkU
+          CO4zBp1vXK1XzDDcxL24SrNSwh6ZLoOB6nMvRDVTzltQaBevPvJ7xGArIPJGpWyT
+          gMpLQ6+AcE01ccZz9laJ6RyH+QedLCaXLAy46KEZAgYeHSEto3+WNy0FZ5CjhNhr
+          9jBJH9xTv6jLRfH2SL5Nl/9RVbkCBuOrQpdQJHhDZ47wqtEOK5K4cP35tU56Z/49
+          leJSNNcyrYySUAlPeiAM60Xy7BzmzI1wwg==
+          -----END CERTIFICATE-----
+    enable_client_debug_messages: false
+    minimum_parameter_entropy: 8
+    enforce_pkce: 'public_clients_only'
+    enable_pkce_plain_challenge: false
+    enable_jwt_access_token_stateless_introspection: false
+    discovery_signed_response_alg: 'none'
+    discovery_signed_response_key_id: ''
+    require_pushed_authorization_requests: false
+    authorization_policies:
+      policy_name:
+        default_policy: 'two_factor'
+        rules:
+          - policy: 'deny'
+            subject: 'group:services'
+    lifespans:
+      access_token: '1h'
+      authorize_code: '1m'
+      id_token: '1h'
+      refresh_token: '90m'
+    cors:
+      endpoints:
+        - 'authorization'
+        - 'token'
+        - 'revocation'
+        - 'introspection'
+      allowed_origins_from_client_redirect_uris: false
+    clients:
+      - client_id: 'portainer'
+        client_name: 'Portainer'
+        client_secret: '$pbkdf2-sha512$310000$c8p78n7pUMln0jzvd4aK4Q$JNRBzwAo0ek5qKn50cFzzvE9RXV88h1wJn5KGiHrD0YKtZaR/nCb2CJPOsKaPK0hjf.9yHxzQGZziziccp6Yng'  # The digest of 'insecure_secret'.
+        public: false
+        authorization_policy: 'two_factor'
+        redirect_uris:
+          - 'https://docker.maxens.org'
+        scopes:
+          - 'openid'
+          - 'profile'
+          - 'groups'
+          - 'email'
+        userinfo_signed_response_alg: 'none'
+
 ...
