@@ -1,12 +1,12 @@
-version: '3.3'
-    
+version: "3"
+
 services:
   authelia:
-    image: authelia/authelia
-    container_name: authelia
-    volumes:
-      - /docker/Authelia:/config #change this to a shared folder on your system. DO NOT use a "volume"
+    container_name: "authelia"
+    image: "authelia/authelia:latest"
+    restart: unless-stopped
+    network_mode: nginx-proxy-manager_default
     ports:
       - 9091:9091
-    environment:
-      - TZ=Europe/Paris
+    volumes:
+      - /docker/authelia/:/config
