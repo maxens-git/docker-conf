@@ -8,8 +8,9 @@ Ajoutez dans le fichier docker-compose.yml de npm la ligne :
 - /docker/npm/snippets:/snippets
 ```
 
-Puis deplacez le fichier snippets dans le dossier /docker/npm
-La ligne n°25 du fichier authelia-authrequest.conf doit être modifié avec l'url du site
+Puis deplacez le fichier snippets dans le dossier /docker/npm.
+
+Attention !! : La ligne n°25 du fichier authelia-authrequest.conf doit être modifié avec l'url du site
 
 ## Creation du proxy dans NPM
 Creez le proxy d'authelia dans npm
