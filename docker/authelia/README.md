@@ -35,3 +35,11 @@ location / {
     proxy_pass $forward_scheme://$server:$port;
 }
 ```
+
+```
+sudo docker run authelia/authelia:latest authelia crypto rand --length 72 --charset rfc3986
+
+sudo docker run authelia/authelia:latest authelia crypto rand --length 64 --charset alphanumeric
+
+sudo docker run authelia/authelia:latest authelia crypto certificate rsa generate && cat private.pem && cat public.crt
+```
