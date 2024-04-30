@@ -1,0 +1,37 @@
+# Authelia avec Nginx proxy manager
+
+
+## Modification de la stack NPM
+
+Ajoutez dans le fichier docker-compose.yml de npm la ligne :
+```
+- /docker/npm/snippets:/snippets
+```
+
+Puis deplacez le fichier snippets dans le dossier /docker/npm
+La ligne n°25 du fichier authelia-authrequest.conf doit être modifié avec l'url du site
+
+## Creation du proxy dans NPM
+Creez le proxy d'authelia dans npm
+```
+http://authelia:9091
+```
+
+Ajoutez dans advanced le code suivant :
+```
+location / {
+    include /snippets/proxy.conf;
+    proxy_pass $forward_scheme://$server:$port;
+}
+```
+
+## Ajout de site 
+Chaque ajout de site doit être référencé dans le fichier configuration.yml d'authelia, et dans NPM > Advanced doit être spécifié :
+```
+include /snippets/authelia-location.conf;
+location / {
+    include /snippets/proxy.conf;
+    include /snippets/authelia-authrequest.conf;
+    proxy_pass $forward_scheme://$server:$port;
+}
+```
