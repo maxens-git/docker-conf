@@ -7,10 +7,13 @@ services:
       - "139:139"
       - "8121:445"
     volumes:
-      - /docker/smb:/smb/
+      - /media/maxens/AISENS/:/smb/
     command: >
       -u "maxens;czq4JEA.jkn4apx2aea"
       -u "films;neh0yvx9xft@AWF7kna"
+      -u "luc;JJqo2k4kmGJXEwXdF26M"
+      
       -s "maxens;/smb/maxens;no;no;no;maxens"
-      -s "films;/smb/films;no;no;no;films"
+      -s "films;/smb/films;no;no;no;maxens,luc"
+      -s "luc;/smb/luc;no;no;no;luc"
     restart: always
