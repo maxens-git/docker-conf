@@ -57,7 +57,15 @@ access_control:
         - "auth.maxens.org" #This should be your authentication URL
       policy: bypass
     - domain: "uptime-kuma.maxens.org" #example domain to protect
-      policy: one_factor
+      policy: two_factor
+    - domain: "rasp.duplicati.maxens.org"
+      policy: two_factor
+    - domain: "netdata.maxens.org"
+      policy: two_factor
+    - domain: "rasp.netdata.maxens.org"
+      policy: two_factor
+    - domain: "pyload.maxens.org"
+      policy: two_factor
 
 session:
   name: authelia_session
@@ -80,7 +88,7 @@ storage:
 notifier:
   disable_startup_check: false
   filesystem:
-    filename: "/data/notification.txt"
+    filename: "/config/notification.txt"
 
 
 identity_providers:
@@ -121,22 +129,22 @@ identity_providers:
           -----END PRIVATE KEY-----
         certificate_chain: |
           -----BEGIN CERTIFICATE-----
-          MIIC5TCCAc2gAwIBAgIQHpTRsLa2yUFLwooNQhXjXjANBgkqhkiG9w0BAQsFADAT
-          MREwDwYDVQQKEwhBdXRoZWxpYTAeFw0yNDA0MzAxMzM3MTJaFw0yNTA0MzAxMzM3
-          MTJaMBMxETAPBgNVBAoTCEF1dGhlbGlhMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A
-          MIIBCgKCAQEA0bTW80b9lCuFIlK1SC0ExNw2kVotLt2n2wulP6UbBhi9BpZ4NuuJ
-          SxaDgD+TqzeNJTihjN5HFlM3IsT8RWvSi0Z2RqwngreV30zsNX9f71KUrZivAWkC
-          5Kiwv8n29mE8aq/n+Ted89f7xb/KtVymVIPbAqA7/qZ9ywkWhJLAxtM7PEMemsJE
-          R0+8k6XgEEO2r1gWsu2WA0Z1rxzpYHd8Q4YaioPCvA4AqLWiW7X3hVOu8lkbdWJQ
-          HQsv2pUX+SfNpqbLu/CmQbIR/2ZrOswpZZVlN7in8KBiNqNTdt9Ia/ihtdIv7nLp
-          KOORUqHVIoox+Qs/FmbwuE4HLeFR+8D68QIDAQABozUwMzAOBgNVHQ8BAf8EBAMC
+          MIIC5TCCAc2gAwIBAgIQENxwbRCShVurct/m2S1N8jANBgkqhkiG9w0BAQsFADAT
+          MREwDwYDVQQKEwhBdXRoZWxpYTAeFw0yNDA0MzAxNTU2MTNaFw0yNTA0MzAxNTU2
+          MTNaMBMxETAPBgNVBAoTCEF1dGhlbGlhMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A
+          MIIBCgKCAQEAy4/LAJgN9G84OgS31YpOUyHcoYQc6FFF8CSLLq2OWt3PaTfY+TFN
+          3SE+81lHlgEY5lW466O1kadi5Z5/JlTRQvT0cCDG2t7ADxsvKm5t2KrH1Mvc8KE/
+          KvdKbDr3ssj9iEuI+ra57KUS0s/+aZ0wuy6gIWVJuaN7pky0m8MZGV0hDq2cXQx1
+          km3heKbyRtg4rvBoaNdA7MvY7DUfCPG7/jcjsfz/4mRy7zKY9Mj2bWluspan29vL
+          8cV2QfsfweymkiAM+1WlYUV/XbrFr7dqZtQg+N1JmG8hTc7XJ7gcliDINgFOx0p9
+          QROWYbaxovkVQZVtPlqAQj6eY8m8YaAcowIDAQABozUwMzAOBgNVHQ8BAf8EBAMC
           BaAwEwYDVR0lBAwwCgYIKwYBBQUHAwEwDAYDVR0TAQH/BAIwADANBgkqhkiG9w0B
-          AQsFAAOCAQEAFihzFtJZJ6BXSbVbwgCODao/1U145vpKYrFdm23VV4WqorQT8bW7
-          2TC6b6Qkv6A4TBfvxq6CY8RtqEErSESgBR33CkXVrn1ctWs+iLqXK7aual9qzdkU
-          CO4zBp1vXK1XzDDcxL24SrNSwh6ZLoOB6nMvRDVTzltQaBevPvJ7xGArIPJGpWyT
-          gMpLQ6+AcE01ccZz9laJ6RyH+QedLCaXLAy46KEZAgYeHSEto3+WNy0FZ5CjhNhr
-          9jBJH9xTv6jLRfH2SL5Nl/9RVbkCBuOrQpdQJHhDZ47wqtEOK5K4cP35tU56Z/49
-          leJSNNcyrYySUAlPeiAM60Xy7BzmzI1wwg==
+          AQsFAAOCAQEADGMqthdhESsoqijMuDOCcyyc9XRQh0NOwroBOvQYBhxDPsax+gyu
+          xmNbI5FvqplCiDgd58PkJ1/DNqcjWzEqxwthb3QpX9nRNlsM8Zv3ntcz75uHo10m
+          ZkD03icAgOBK5d8ZCsnksEjrYBAM5eCmj1zNggD22Ry1ncnRBuB7EqXGA+UjaC19
+          JYUSc+oX0kbWPUuMxh0YJ3L8/t30NBbWNyzMKxK0xmjBMXKoI+VzXvFIlZkogz9x
+          0d8QfLcc1u6f3lM9wqkb6w6xrZdxzE9TR8Xam4nozFwQ09JWzSTiYNZnDU2f1rE0
+          NkTD9B3xhhCHUoTBCg4z47DUFhqP5Duazw==
           -----END CERTIFICATE-----
     enable_client_debug_messages: false
     minimum_parameter_entropy: 8
@@ -167,11 +175,11 @@ identity_providers:
     clients:
       - client_id: 'portainer'
         client_name: 'Portainer'
-        client_secret: ''  # The digest of 'insecure_secret'.
+        client_secret: '$pbkdf2-sha512$310000$DB7sOAAmXiqRJaZ9HFD/UQ$Izgo2Dg2Fh7Qc4cc3pb.qsxkzWB8XwHUTPnSRSCe.CdwwdW.Yu8TtiZRkRyUCd1nk4UBNcONZo30hov6Az0ktA'  # The digest of 'insecure_secret'.
         public: false
         authorization_policy: 'two_factor'
         redirect_uris:
-          - 'https://docker.maxens.org'
+          - 'https://docker.maxens.org/'
         scopes:
           - 'openid'
           - 'profile'
@@ -181,12 +189,12 @@ identity_providers:
 
       - client_id: 'immich'
         client_name: 'immich'
-        client_secret: ''  # The digest of 'insecure_secret'.
+        client_secret: '$pbkdf2-sha512$310000$HUUo.pRES1G3xUGoedkMhA$i57mktLgnOLacBBdt6w4kCbVR4aKDEaEHXGEIhkwrIMnjj4yIL./lY1WN4P5YQvS6kax60hfjME6GNOJbTLKtQ'  # The digest of 'insecure_secret'.
         public: false
         authorization_policy: 'two_factor'
         redirect_uris:
-          - 'https://immich.example.com/auth/login'
-          - 'https://immich.example.com/user-settings'
+          - 'https://immich.maxens.org/auth/login'
+          - 'https://immich.maxens.org/user-settings'
           - 'app.immich:/'
         scopes:
           - 'openid'
@@ -194,5 +202,16 @@ identity_providers:
           - 'email'
         userinfo_signed_response_alg: 'none'
 
-
-...
+      - client_id: 'portainer-raspberry'
+        client_name: 'Portainer'
+        client_secret: '$pbkdf2-sha512$310000$YpOM60Jwn/fbf6gt1y5nsA$1VDpTqIpzlSI.qCTgUenXQsOf8ys/e96lM.N8lJlmLvsioIxglfxCkrjkCrAuR8wH7C4tmGm2C88rZn3GAAWnA'  # The digest of 'insecure_secret'.
+        public: false
+        authorization_policy: 'two_factor'
+        redirect_uris:
+          - 'https://rasp.docker.maxens.org/'
+        scopes:
+          - 'openid'
+          - 'profile'
+          - 'groups'
+          - 'email'
+        userinfo_signed_response_alg: 'none'
