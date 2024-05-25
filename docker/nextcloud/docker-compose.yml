@@ -14,8 +14,8 @@ services:
       - MYSQL_USER=maxens
       - MYSQL_HOST=db
       - NEXTCLOUD_TRUSTED_DOMAINS=cloud.maxens.org
-      - OVERWRITEPROTOCOL=https
-      - OVERWRITECLIURL=https://cloud.maxens.org
+      - OVERWRITEPROTOCOL=https #SI REVERSE PROXY + HTTPS
+      - OVERWRITECLIURL=https://cloud.maxens.org #SI REVERSE PROXY + HTTPS
     depends_on:
       - db
 
