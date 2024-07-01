@@ -1,0 +1,17 @@
+services:
+    3proxy-socks:
+        container_name: 3proxy-socks
+        ports:
+            - 1080:1080/tcp
+        environment:
+            - PRIMARY_RESOLVER=2001:4860:4860::8888
+        image: ghcr.io/tarampampam/3proxy:latest
+    3proxy-http:
+        container_name: 3proxy-http
+        ports:
+            - 3129:3128/tcp
+        environment:
+            - PROXY_LOGIN=maxens
+            - PROXY_PASSWORD=PASSWORD
+            - PRIMARY_RESOLVER=2001:4860:4860::8888
+        image: ghcr.io/tarampampam/3proxy:latest
