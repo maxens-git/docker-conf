@@ -9,7 +9,7 @@ if (!isset($variable)) {
 }
 
 // Remplacer la variable dans l'URL de la page web
-$url = "https://api.alldebrid.com/v4/link/unlock?agent=php&apikey=REDACTED_API_KEY&link=" . $variable;
+$url = "https://api.alldebrid.com/v4/link/unlock?agent=php&apikey=APIKEY&link=" . $variable;
 
 // Obtenir le contenu de la page web
 $contenu = file_get_contents($url);
