@@ -1,0 +1,23 @@
+version: "3"
+services:
+  adguardhome-sync:
+    image: ghcr.io/bakito/adguardhome-sync
+    container_name: adguardhome-sync
+    command: run
+    environment:
+      LOG_LEVEL: "info"
+
+      ORIGIN_URL: "https://dns.maxens.org"
+      ORIGIN_USERNAME: "username"
+      ORIGIN_PASSWORD: "password"
+      
+      REPLICA1_URL: "https://dns0.maxens.org"
+      REPLICA1_USERNAME: "username"
+      REPLICA1_PASSWORD: "password"
+      
+      CRON: "0 */2 * * *" # run every 10 minutes
+      RUN_ON_START: "true"
+      API_PORT: 8080
+    ports:
+      - 8081:8080
+    restart: unless-stopped
