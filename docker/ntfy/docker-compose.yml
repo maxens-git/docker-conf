@@ -12,7 +12,7 @@ services:
       NTFY_AUTH_DEFAULT_ACCESS: deny-all
       NTFY_BEHIND_PROXY: true
       NTFY_ATTACHMENT_CACHE_DIR: /var/lib/ntfy/attachments
-      #NTFY_ENABLE_LOGIN: true
+      #NTFY_ENABLE_LOGIN: true #ntfy user add --role=admin maxens
       NTFY_UPSTREAM_BASE_URL: https://ntfy.sh #Ne pas changer l'adresse (notification ios)
       NTFY_WEB_PUSH_FILE: /var/lib/ntfy/webpush.db
 
