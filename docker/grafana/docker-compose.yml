@@ -1,0 +1,67 @@
+version: '3'
+
+services:
+  grafana:
+    image: grafana/grafana:latest
+    network_mode: nginx-proxy-manager_default
+    container_name: grafana
+    ports:
+      - 4100:3000
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_SERVER_ROOT_URL=https://logs.maxens.org
+      - GF_AUTH_GENERIC_OAUTH_ENABLED=true
+      - GF_AUTH_GENERIC_OAUTH_NAME=Authelia
+      - GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP=true
+      - GF_AUTH_GENERIC_OAUTH_CLIENT_ID=grafana
+      - GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET=SECRET
+      - GF_AUTH_GENERIC_OAUTH_SCOPES=email profile
+      - GF_AUTH_GENERIC_OAUTH_AUTH_URL=https://auth.maxens.org/api/oidc/authorization
+      - GF_AUTH_GENERIC_OAUTH_TOKEN_URL=https://auth.maxens.org/api/oidc/token
+      - GF_AUTH_GENERIC_OAUTH_API_URL=https://auth.maxens.org/api/oidc/userinfo
+      - GF_AUTH_GENERIC_OAUTH_LOGIN_ATTRIBUTE_PATH=preferred_username
+      - GF_AUTH_GENERIC_OAUTH_GROUPS_ATTRIBUTE_PATH=groups
+      - GF_AUTH_GENERIC_OAUTH_NAME_ATTRIBUTE_PATH=name
+      - GF_AUTH_GENERIC_OAUTH_USE_PKCE=true
+      #- GF_AUTH_DISABLE_LOGIN_FORM=true
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    network_mode: nginx-proxy-manager_default
+    ports:
+      - 4101:9090
+    volumes:
+      - /docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    restart: always
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    network_mode: nginx-proxy-manager_default
+    container_name: cadvisor
+    ports:
+      - 4102:8098
+    command:
+      - '-port=8098'
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    devices:
+      - /dev/kmsg
+    privileged: true
+    restart: unless-stopped
+  
+  node_exporter:
+    image: quay.io/prometheus/node-exporter:latest
+    container_name: node_exporter
+    network_mode: nginx-proxy-manager_default
+    ports:
+      - 4103:9100
+    command: '--path.rootfs=/host'
+    pid: host
+    restart: unless-stopped
+    volumes:
+      - /:/host:ro,rslave
