@@ -55,5 +55,4 @@ services:
     image: ghcr.io/henrywhitaker3/adguard-exporter:latest
 
 volumes:
-
   prometheus-data: {}
