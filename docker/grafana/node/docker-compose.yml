@@ -43,16 +43,17 @@ services:
       - /:/host:ro,rslave
 
   adguard-exporter:
-    environment:
-      - ADGUARD_SERVERS=https://adguardhome
-      - ADGUARD_USERNAMES=maxens
-      - ADGUARD_PASSWORDS=REDACTED_PASSWORD
-    ports:
-      - 4104:9618
-    container_name: adguard-exporter
+    container_name: adguard_exporter
     network_mode: nginx-proxy-manager_default
+    environment:
+      - ADGUARD_SERVERS=https://dns1.maxens.org
+      - ADGUARD_USERNAMES=user 
+      - ADGUARD_PASSWORDS=password
+      - INTERVAL=15s
+    ports:
+      - 4104:9618 
     image: ghcr.io/henrywhitaker3/adguard-exporter:latest
-    #restart: unless-stopped
 
 volumes:
+
   prometheus-data: {}
