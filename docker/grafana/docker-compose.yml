@@ -28,7 +28,6 @@ services:
     volumes:
       - grafana-data:/var/lib/grafana
       - grafana-conf:/etc/grafana
-    #user: '1001'
 
   prometheus:
     image: prom/prometheus:latest
