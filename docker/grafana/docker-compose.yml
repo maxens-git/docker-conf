@@ -65,3 +65,14 @@ services:
     restart: unless-stopped
     volumes:
       - /:/host:ro,rslave
+
+  adguard-exporter:
+    environment:
+      - ADGUARD_SERVERS=https://dns1.maxens.org,https://dns2.maxens.org
+      - ADGUARD_USERNAMES=usr1,usr2
+      - ADGUARD_PASSWORDS=password1,password2
+    ports:
+      - 4104:9618
+    container_name: adguard-exporter
+    network_mode: nginx-proxy-manager_default
+    image: ghcr.io/henrywhitaker3/adguard-exporter:latest
