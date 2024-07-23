@@ -24,10 +24,11 @@ services:
       - GF_AUTH_GENERIC_OAUTH_GROUPS_ATTRIBUTE_PATH=groups
       - GF_AUTH_GENERIC_OAUTH_NAME_ATTRIBUTE_PATH=name
       - GF_AUTH_GENERIC_OAUTH_USE_PKCE=true
-      #- GF_AUTH_DISABLE_LOGIN_FORM=true
+      - GF_AUTH_DISABLE_LOGIN_FORM=true
     volumes:
       - grafana-data:/var/lib/grafana
       - grafana-conf:/etc/grafana
+    #user: '1001'
 
   prometheus:
     image: prom/prometheus:latest
@@ -36,6 +37,7 @@ services:
     ports:
       - 4101:9090
     volumes:
+      - prometheus-data:/prometheus
       - /docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     restart: always
   cadvisor:
@@ -72,3 +74,4 @@ services:
 volumes:
   grafana-data: {}
   grafana-conf: {}
+  prometheus-data: {}
