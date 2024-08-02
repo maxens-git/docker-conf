@@ -4,18 +4,19 @@ services:
   nextcloud:
     image: nextcloud
     container_name: nextcloud
+    restart: always
     ports:
       - 8998:80
     volumes:
-      - /media/maxens/AISENS2/nextcloud/nextcloud:/var/www/html
+      - /media/maxens/595bf993-a269-47a4-bb20-5694dc30f194/data:/var/www/html
     environment:
-      - MYSQL_PASSWORD=PASSWORD
+      - MYSQL_PASSWORD=mdp
       - MYSQL_DATABASE=nextcloud
       - MYSQL_USER=maxens
       - MYSQL_HOST=db
-      - NEXTCLOUD_TRUSTED_DOMAINS=cloud.maxens.org
+      - NEXTCLOUD_TRUSTED_DOMAINS=files.maxens.org
       - OVERWRITEPROTOCOL=https #SI REVERSE PROXY + HTTPS
-      - OVERWRITECLIURL=https://cloud.maxens.org #SI REVERSE PROXY + HTTPS
+      - OVERWRITECLIURL=https://files.maxens.org #SI REVERSE PROXY + HTTPS
     depends_on:
       - db
 
@@ -24,10 +25,10 @@ services:
     container_name: nextcloud-db
     restart: always
     volumes:
-      - /media/maxens/AISENS2/nextcloud/db:/var/lib/mysql
+      - /media/maxens/595bf993-a269-47a4-bb20-5694dc30f194/db:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=ROOTPASWWORD
+      - MYSQL_ROOT_PASSWORD=mdp1
       - MYSQL_DATABASE=nextcloud
       - MYSQL_USER=maxens
-      - MYSQL_PASSWORD=PASSWORD
+      - MYSQL_PASSWORD=mdp
     
