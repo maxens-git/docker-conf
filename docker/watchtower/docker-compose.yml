@@ -1,0 +1,10 @@
+services:
+    watchtower:
+        container_name: watchtower
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+        image: containrrr/watchtower
+        environment:
+            - WATCHTOWER_NOTIFICATIONS=shoutrrr
+            - WATCHTOWER_NOTIFICATION_SKIP_TITLE=True
+            - WATCHTOWER_NOTIFICATION_URL=generic+https://ntfy.maxens.org/watchtower?@authorization=Bearer+TOKEN #generer un token : ntfy token add maxens
