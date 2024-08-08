@@ -1,0 +1,23 @@
+services:
+  beszel:
+    image: 'henrygd/beszel'
+    container_name: 'beszel'
+    restart: unless-stopped
+    network_mode: nginx-proxy-manager_default
+    ports:
+      - '8090:8090'
+    volumes:
+      - /docker/beszel/data:/beszel_data
+      
+  beszel-agent:
+    image: 'henrygd/beszel-agent'
+    container_name: 'beszel-agent'
+    network_mode: nginx-proxy-manager_default
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    ports:
+      - 45876:45876
+    environment:
+      PORT: 45876
+      KEY: 'ssh key'
