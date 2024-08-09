@@ -1,0 +1,26 @@
+version: '3.5'
+
+services:
+    cobalt-api:
+        image: ghcr.io/imputnet/cobalt:7
+        restart: unless-stopped
+        container_name: cobalt-api
+        init: true
+        ports:
+            - 9000:9000/tcp
+        environment:
+            API_URL: "https://api.dl.maxens.org/"
+            API_NAME: "eu-nl"
+    cobalt-web:
+        image: ghcr.io/imputnet/cobalt:7
+        restart: unless-stopped
+        container_name: cobalt-web
+        init: true
+        ports:
+            - 9001:9001/tcp
+        environment:
+            # replace https://cobalt.tools/ with your instance's target url in same format
+            WEB_URL: "https://dl.maxens.org/"
+            # replace https://api.cobalt.tools/ with preferred api instance url
+            API_URL: "https://api.dl.maxens.org/"
+
