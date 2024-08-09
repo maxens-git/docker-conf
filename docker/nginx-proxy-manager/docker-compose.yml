@@ -2,7 +2,7 @@ version: "3"
 services:
   app:
     image: 'jc21/nginx-proxy-manager:latest'
-    container_name: npm
+    container_name: nginx-proxy-manager
     restart: unless-stopped
     labels:
       - "diun.enable=true"
