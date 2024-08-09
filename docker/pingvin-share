@@ -1,6 +1,8 @@
 services:
   pingvin-share:
     image: stonith404/pingvin-share
+    network_mode: nginx-proxy-manager_default
+    container_name: pingvin-share
     restart: unless-stopped
     ports:
       - 11099:3000
