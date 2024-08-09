@@ -27,3 +27,4 @@ services:
     volumes:
       - /docker/npm/data:/data
       - /docker/npm/letsencrypt:/etc/letsencrypt
+      - /docker/npm/snippets:/snippets
