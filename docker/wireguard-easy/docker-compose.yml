@@ -1,0 +1,27 @@
+services:
+  wg-easy:
+    environment:
+      # Change Language:
+      # (Supports: en, ua, ru, tr, no, pl, fr, de, ca, es, ko, vi, nl, is, pt, chs, cht, it, th, hi)
+      - LANG=fr
+      # ⚠️ Required:
+      # Change this to your host's public address
+      - WG_HOST=wg0.maxens.org
+
+
+    image: ghcr.io/wg-easy/wg-easy
+    container_name: wg-easy
+    network_mode: nginx-proxy-manager_default
+    volumes:
+      - /docker/wireguard:/etc/wireguard
+    ports:
+      - "51820:51820/udp"
+      - "51821:51821/tcp"
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+      # - NET_RAW # ⚠️ Uncomment if using Podman 
+    sysctls:
+      - net.ipv4.ip_forward=1
+      - net.ipv4.conf.all.src_valid_mark=1
