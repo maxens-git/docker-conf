@@ -1,0 +1,9 @@
+services:
+  pingvin-share:
+    image: stonith404/pingvin-share
+    restart: unless-stopped
+    ports:
+      - 11099:3000
+    volumes:
+      - /docker/pingvin/data:/opt/app/backend/data
+      #- "./data/images:/opt/app/frontend/public/img"
