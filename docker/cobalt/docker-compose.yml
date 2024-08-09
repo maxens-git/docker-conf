@@ -5,6 +5,7 @@ services:
         image: ghcr.io/imputnet/cobalt:7
         restart: unless-stopped
         container_name: cobalt-api
+        network_mode: nginx-proxy-manager_default
         init: true
         ports:
             - 9000:9000/tcp
@@ -15,6 +16,7 @@ services:
         image: ghcr.io/imputnet/cobalt:7
         restart: unless-stopped
         container_name: cobalt-web
+        network_mode: nginx-proxy-manager_default
         init: true
         ports:
             - 9001:9001/tcp
