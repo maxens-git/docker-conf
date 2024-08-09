@@ -2,7 +2,7 @@ version: '3'
 
 services:
   crafty:
-    container_name: crafty_container
+    container_name: crafty
     image: registry.gitlab.com/crafty-controller/crafty-4:latest
     network_mode: nginx-proxy-manager_default
     restart: always
