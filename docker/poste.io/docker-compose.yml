@@ -1,0 +1,26 @@
+services:
+    poste.io:
+        network_mode: nginx-proxy-manager_default
+        environment:
+            - TZ=Europe/Paris
+            #- HTTP_PORT=8080
+            #- HTTPS_PORT=4433
+            - DISABLE_CLAMAV=TRUE
+            - DISABLE_RSPAMD=TRUE
+        volumes:
+            - /docker/poste.io/:/data
+        container_name: mail
+        hostname: mail.maxens.org
+        restart: unless-stopped
+        ports:
+            - '80:80' # Public HTTP Port
+            - '443:443' # Public HTTPS Port
+            - '25:25'
+            - '110:110'
+            - '143:143'
+            - '465:465'
+            - '587:587'
+            - '993:993'
+            - '995:995'
+        tty: true
+        image: analogic/poste.io
