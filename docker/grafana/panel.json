@@ -26,7 +26,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 1860,
   "graphTooltip": 1,
-  "id": 2,
+  "id": 1,
   "links": [
     {
       "icon": "external link",
@@ -126,7 +126,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.1.0",
+      "pluginVersion": "11.2.2+security-01",
       "targets": [
         {
           "datasource": {
@@ -149,8 +149,9 @@
     },
     {
       "datasource": {
+        "default": true,
         "type": "prometheus",
-        "uid": "bdslwt3sratq8a"
+        "uid": "ae16fvqwd03r4d"
       },
       "description": "Used Root FS",
       "fieldConfig": {
@@ -217,7 +218,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.1.0",
+      "pluginVersion": "11.2.2+security-01",
       "targets": [
         {
           "datasource": {
@@ -226,7 +227,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "100 - ((node_filesystem_avail_bytes{instance=\"$node\",job=\"$job\",mountpoint=\"/\",fstype!=\"rootfs\"} * 100) / node_filesystem_size_bytes{instance=\"$node\",job=\"$job\",mountpoint=\"/\",fstype!=\"rootfs\"})",
+          "expr": "100- ((node_filesystem_avail_bytes{instance=\"$node\",job=\"$job\",mountpoint=\"/\",fstype!=\"rootfs\"} * 100) / node_filesystem_size_bytes{instance=\"$node\",job=\"$job\",mountpoint=\"/\",fstype!=\"rootfs\"})",
           "format": "time_series",
           "instant": true,
           "intervalFactor": 1,
@@ -242,8 +243,9 @@
     },
     {
       "datasource": {
+        "default": true,
         "type": "prometheus",
-        "uid": "bdslwt3sratq8a"
+        "uid": "ae16fvqwd03r4d"
       },
       "description": "Busy state of all CPU cores together",
       "fieldConfig": {
@@ -308,7 +310,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.1.0",
+      "pluginVersion": "11.2.2+security-01",
       "targets": [
         {
           "datasource": {
@@ -333,8 +335,9 @@
     },
     {
       "datasource": {
+        "default": true,
         "type": "prometheus",
-        "uid": "bdslwt3sratq8a"
+        "uid": "ae16fvqwd03r4d"
       },
       "description": "Non available RAM memory",
       "fieldConfig": {
@@ -390,7 +393,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.1.0",
+      "pluginVersion": "11.2.2+security-01",
       "targets": [
         {
           "datasource": {
@@ -432,8 +435,9 @@
     },
     {
       "datasource": {
+        "default": true,
         "type": "prometheus",
-        "uid": "bdslwt3sratq8a"
+        "uid": "ae16fvqwd03r4d"
       },
       "description": "Used Root FS",
       "fieldConfig": {
@@ -500,7 +504,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.1.0",
+      "pluginVersion": "11.2.2+security-01",
       "targets": [
         {
           "datasource": {
@@ -509,7 +513,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "mc_tps{instance=\"crafty:9940\", job=\"minecraft\"}",
+          "expr": "mc_tps{instance=\"minecraft-spigot:9940\", job=\"minecraft\"}",
           "format": "time_series",
           "instant": true,
           "intervalFactor": 1,
@@ -525,8 +529,9 @@
     },
     {
       "datasource": {
+        "default": true,
         "type": "prometheus",
-        "uid": "bdslwt3sratq8a"
+        "uid": "ae16fvqwd03r4d"
       },
       "description": "",
       "fieldConfig": {
@@ -584,7 +589,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.1.0",
+      "pluginVersion": "11.2.2+security-01",
       "targets": [
         {
           "datasource": {
@@ -593,7 +598,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "mc_players_online_total{instance=\"crafty:9940\", job=\"minecraft\", world=\"world\"}",
+          "expr": "mc_players_online_total{instance=\"minecraft-spigot:9940\", job=\"minecraft\", world=\"world\"}",
           "format": "time_series",
           "instant": true,
           "intervalFactor": 1,
@@ -609,8 +614,9 @@
     },
     {
       "datasource": {
+        "default": true,
         "type": "prometheus",
-        "uid": "bdslwt3sratq8a"
+        "uid": "ae16fvqwd03r4d"
       },
       "description": "Non available RAM memory",
       "fieldConfig": {
@@ -625,6 +631,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 0,
             "gradientMode": "none",
@@ -727,8 +734,9 @@
     },
     {
       "datasource": {
+        "name": "Compute1",
         "type": "prometheus",
-        "uid": "fdslwvu36yr5sb"
+        "uid": "ce1gmrpdaf75sd"
       },
       "description": "System uptime",
       "fieldConfig": {
@@ -752,8 +760,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -791,12 +798,12 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.1.0",
+      "pluginVersion": "11.2.2+security-01",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fdslwvu36yr5sb"
+            "uid": "ce1gmrpdaf75sd"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -814,8 +821,9 @@
     },
     {
       "datasource": {
+        "name": "Compute1",
         "type": "prometheus",
-        "uid": "fdslwvu36yr5sb"
+        "uid": "ce1gmrpdaf75sd"
       },
       "description": "Used Root FS",
       "fieldConfig": {
@@ -841,8 +849,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "rgba(50, 172, 45, 0.97)",
-                "value": null
+                "color": "rgba(50, 172, 45, 0.97)"
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
@@ -882,12 +889,12 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.1.0",
+      "pluginVersion": "11.2.2+security-01",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fdslwvu36yr5sb"
+            "uid": "ce1gmrpdaf75sd"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -906,8 +913,9 @@
     },
     {
       "datasource": {
+        "name": "Compute1",
         "type": "prometheus",
-        "uid": "fdslwvu36yr5sb"
+        "uid": "ce1gmrpdaf75sd"
       },
       "description": "Busy state of all CPU cores together",
       "fieldConfig": {
@@ -933,8 +941,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "rgba(50, 172, 45, 0.97)",
-                "value": null
+                "color": "rgba(50, 172, 45, 0.97)"
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
@@ -972,12 +979,12 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.1.0",
+      "pluginVersion": "11.2.2+security-01",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fdslwvu36yr5sb"
+            "uid": "ce1gmrpdaf75sd"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -997,8 +1004,9 @@
     },
     {
       "datasource": {
+        "name": "Compute1",
         "type": "prometheus",
-        "uid": "fdslwvu36yr5sb"
+        "uid": "ce1gmrpdaf75sd"
       },
       "description": "Non available RAM memory",
       "fieldConfig": {
@@ -1014,8 +1022,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "rgba(50, 172, 45, 0.97)",
-                "value": null
+                "color": "rgba(50, 172, 45, 0.97)"
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
@@ -1054,12 +1061,12 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.1.0",
+      "pluginVersion": "11.2.2+security-01",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fdslwvu36yr5sb"
+            "uid": "ce1gmrpdaf75sd"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -1075,7 +1082,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fdslwvu36yr5sb"
+            "uid": "ce1gmrpdaf75sd"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -1095,8 +1102,9 @@
     },
     {
       "datasource": {
+        "default": false,
         "type": "prometheus",
-        "uid": "fdslwvu36yr5sb"
+        "uid": "ce1gmrpdaf75sd"
       },
       "fieldConfig": {
         "defaults": {
@@ -1122,8 +1130,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "dark-red",
-                "value": null
+                "color": "dark-red"
               },
               {
                 "color": "dark-green",
@@ -1160,15 +1167,15 @@
         "textMode": "value",
         "wideLayout": true
       },
-      "pluginVersion": "11.1.0",
+      "pluginVersion": "11.2.2+security-01",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fdslwvu36yr5sb"
+            "uid": "ce1gmrpdaf75sd"
           },
           "editorMode": "code",
-          "expr": "adguard_running{instance=\"adguard_exporter:9618\", job=\"adguard\", server=\"https://dns1.maxens.org\"}",
+          "expr": "adguard_running{instance=\"adguard_exporter:9618\", job=\"adguard\", server=\"https://dns.maxens.eu\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1183,8 +1190,9 @@
     },
     {
       "datasource": {
+        "name": "Compute1",
         "type": "prometheus",
-        "uid": "fdslwvu36yr5sb"
+        "uid": "ce1gmrpdaf75sd"
       },
       "fieldConfig": {
         "defaults": {
@@ -1210,8 +1218,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "dark-red",
-                "value": null
+                "color": "dark-red"
               },
               {
                 "color": "dark-green",
@@ -1248,15 +1255,15 @@
         "textMode": "value",
         "wideLayout": true
       },
-      "pluginVersion": "11.1.0",
+      "pluginVersion": "11.2.2+security-01",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fdslwvu36yr5sb"
+            "uid": "ce1gmrpdaf75sd"
           },
           "editorMode": "code",
-          "expr": "adguard_avg_processing_time_seconds{instance=\"adguard_exporter:9618\", job=\"adguard\", server=\"https://dns1.maxens.org\"}*1000",
+          "expr": "adguard_avg_processing_time_seconds{instance=\"adguard_exporter:9618\", job=\"adguard\", server=\"https://dns.maxens.eu\"}*1000",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1271,8 +1278,9 @@
     },
     {
       "datasource": {
+        "name": "Compute1",
         "type": "prometheus",
-        "uid": "fdslwvu36yr5sb"
+        "uid": "ce1gmrpdaf75sd"
       },
       "description": "Non available RAM memory",
       "fieldConfig": {
@@ -1287,6 +1295,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 0,
             "gradientMode": "none",
@@ -1318,8 +1327,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -1352,7 +1360,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fdslwvu36yr5sb"
+            "uid": "ce1gmrpdaf75sd"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -1376,8 +1384,9 @@
     },
     {
       "datasource": {
+        "name": "Compute1",
         "type": "prometheus",
-        "uid": "fdslwvu36yr5sb"
+        "uid": "ce1gmrpdaf75sd"
       },
       "fieldConfig": {
         "defaults": {
@@ -1393,8 +1402,7 @@
             "steps": [
               {
                 "color": "green",
-                "index": 0,
-                "value": null
+                "index": 0
               },
               {
                 "color": "#EAB839",
@@ -1436,15 +1444,15 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.1.0",
+      "pluginVersion": "11.2.2+security-01",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fdslwvu36yr5sb"
+            "uid": "ce1gmrpdaf75sd"
           },
           "editorMode": "code",
-          "expr": "(adguard_queries_blocked{server=\"https://dns1.maxens.org\"}/ adguard_queries{server=\"https://dns1.maxens.org\"}) * 100",
+          "expr": "(adguard_queries_blocked{server=\"https://dns.maxens.eu\"}/ adguard_queries{server=\"https://dns.maxens.eu\"}) * 100",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -1456,8 +1464,9 @@
     },
     {
       "datasource": {
+        "default": false,
         "type": "prometheus",
-        "uid": "fdslwvu36yr5sb"
+        "uid": "ce1gmrpdaf75sd"
       },
       "fieldConfig": {
         "defaults": {
@@ -1483,8 +1492,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "dark-red",
-                "value": null
+                "color": "dark-red"
               },
               {
                 "color": "dark-green",
@@ -1521,15 +1529,15 @@
         "textMode": "value",
         "wideLayout": true
       },
-      "pluginVersion": "11.1.0",
+      "pluginVersion": "11.2.2+security-01",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fdslwvu36yr5sb"
+            "uid": "ce1gmrpdaf75sd"
           },
           "editorMode": "code",
-          "expr": "adguard_queries{instance=\"adguard_exporter:9618\", job=\"adguard\", server=\"https://dns1.maxens.org\"}",
+          "expr": "adguard_queries{instance=\"adguard_exporter:9618\", job=\"adguard\", server=\"https://dns.maxens.eu\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1544,8 +1552,9 @@
     },
     {
       "datasource": {
+        "name": "Compute1",
         "type": "prometheus",
-        "uid": "fdslwvu36yr5sb"
+        "uid": "ce1gmrpdaf75sd"
       },
       "description": "",
       "fieldConfig": {
@@ -1560,6 +1569,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 0,
             "gradientMode": "none",
@@ -1591,8 +1601,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -1625,12 +1634,12 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fdslwvu36yr5sb"
+            "uid": "ce1gmrpdaf75sd"
           },
           "disableTextWrap": false,
           "editorMode": "code",
           "exemplar": false,
-          "expr": "adguard_queries{instance=\"adguard_exporter:9618\", job=\"adguard\", server=\"https://dns1.maxens.org\"}",
+          "expr": "adguard_queries{instance=\"adguard_exporter:9618\", job=\"adguard\", server=\"https://dns.maxens.eu\"}",
           "format": "table",
           "fullMetaSearch": false,
           "hide": false,
@@ -1649,8 +1658,9 @@
     },
     {
       "datasource": {
+        "default": false,
         "type": "prometheus",
-        "uid": "fdslwvu36yr5sb"
+        "uid": "ce1gmrpdaf75sd"
       },
       "fieldConfig": {
         "defaults": {
@@ -1706,10 +1716,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fdslwvu36yr5sb"
+            "uid": "ce1gmrpdaf75sd"
           },
           "editorMode": "code",
-          "expr": "topk(10, increase(adguard_top_queried_domains{server=\"https://dns1.maxens.org\"}[$__range]))",
+          "expr": "topk(10, increase(adguard_top_queried_domains{server=\"https://dns.maxens.eu\"}[$__range]))",
           "instant": true,
           "interval": "",
           "legendFormat": "{{domain}}",
@@ -1721,8 +1731,9 @@
     },
     {
       "datasource": {
+        "name": "Compute1",
         "type": "prometheus",
-        "uid": "fdslwvu36yr5sb"
+        "uid": "ce1gmrpdaf75sd"
       },
       "fieldConfig": {
         "defaults": {
@@ -1778,10 +1789,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fdslwvu36yr5sb"
+            "uid": "ce1gmrpdaf75sd"
           },
           "editorMode": "code",
-          "expr": "topk(10, increase(adguard_top_clients{server=\"https://dns1.maxens.org\"}[$__range]))",
+          "expr": "topk(10, increase(adguard_top_clients{server=\"https://dns.maxens.eu\"}[$__range]))",
           "instant": true,
           "interval": "",
           "legendFormat": "{{client}}",
@@ -1806,8 +1817,9 @@
     },
     {
       "datasource": {
+        "default": false,
         "type": "prometheus",
-        "uid": "edslwx44a3t34d"
+        "uid": "ce1gmsvue9jb4b"
       },
       "description": "",
       "fieldConfig": {
@@ -1831,8 +1843,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1870,12 +1881,12 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.1.0",
+      "pluginVersion": "11.2.2+security-01",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "edslwx44a3t34d"
+            "uid": "ce1gmsvue9jb4b"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -1893,8 +1904,9 @@
     },
     {
       "datasource": {
+        "name": "Compute2",
         "type": "prometheus",
-        "uid": "edslwx44a3t34d"
+        "uid": "ce1gmsvue9jb4b"
       },
       "description": "",
       "fieldConfig": {
@@ -1920,8 +1932,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "rgba(50, 172, 45, 0.97)",
-                "value": null
+                "color": "rgba(50, 172, 45, 0.97)"
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
@@ -1961,12 +1972,12 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.1.0",
+      "pluginVersion": "11.2.2+security-01",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "edslwx44a3t34d"
+            "uid": "ce1gmsvue9jb4b"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -1985,8 +1996,9 @@
     },
     {
       "datasource": {
+        "name": "Compute2",
         "type": "prometheus",
-        "uid": "edslwx44a3t34d"
+        "uid": "ce1gmsvue9jb4b"
       },
       "description": "",
       "fieldConfig": {
@@ -2012,8 +2024,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "rgba(50, 172, 45, 0.97)",
-                "value": null
+                "color": "rgba(50, 172, 45, 0.97)"
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
@@ -2051,12 +2062,12 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.1.0",
+      "pluginVersion": "11.2.2+security-01",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "edslwx44a3t34d"
+            "uid": "ce1gmsvue9jb4b"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -2076,8 +2087,9 @@
     },
     {
       "datasource": {
+        "name": "Compute2",
         "type": "prometheus",
-        "uid": "edslwx44a3t34d"
+        "uid": "ce1gmsvue9jb4b"
       },
       "description": "",
       "fieldConfig": {
@@ -2093,8 +2105,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "rgba(50, 172, 45, 0.97)",
-                "value": null
+                "color": "rgba(50, 172, 45, 0.97)"
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
@@ -2133,12 +2144,12 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.1.0",
+      "pluginVersion": "11.2.2+security-01",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "edslwx44a3t34d"
+            "uid": "ce1gmsvue9jb4b"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -2154,7 +2165,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "edslwx44a3t34d"
+            "uid": "ce1gmsvue9jb4b"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -2174,184 +2185,9 @@
     },
     {
       "datasource": {
+        "name": "Compute2",
         "type": "prometheus",
-        "uid": "edslwx44a3t34d"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "Stopped"
-                },
-                "1": {
-                  "text": "Enabled"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "max": 1,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "dark-red",
-                "value": null
-              },
-              {
-                "color": "dark-green",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "short"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 4,
-        "x": 16,
-        "y": 36
-      },
-      "id": 289,
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "value",
-        "wideLayout": true
-      },
-      "pluginVersion": "11.1.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "edslwx44a3t34d"
-          },
-          "editorMode": "code",
-          "expr": "adguard_running{instance=\"adguard_exporter:9618\", job=\"adguard\", server=\"https://dns2.maxens.org\"}",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "AdguardHome Status",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "edslwx44a3t34d"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "Stopped"
-                },
-                "1": {
-                  "text": "Enabled"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "max": 1,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "dark-red",
-                "value": null
-              },
-              {
-                "color": "dark-green",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "ms"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 4,
-        "x": 20,
-        "y": 36
-      },
-      "id": 291,
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "value",
-        "wideLayout": true
-      },
-      "pluginVersion": "11.1.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "edslwx44a3t34d"
-          },
-          "editorMode": "code",
-          "expr": "adguard_avg_processing_time_seconds{instance=\"adguard_exporter:9618\", job=\"adguard\", server=\"https://dns2.maxens.org\"}*1000",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "AdguardHome Processing time",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "edslwx44a3t34d"
+        "uid": "ce1gmsvue9jb4b"
       },
       "description": "",
       "fieldConfig": {
@@ -2366,6 +2202,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 0,
             "gradientMode": "none",
@@ -2397,8 +2234,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -2431,7 +2267,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "edslwx44a3t34d"
+            "uid": "ce1gmsvue9jb4b"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -2452,420 +2288,6 @@
       "title": "CPU Busy Compute2",
       "transparent": true,
       "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "edslwx44a3t34d"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "decimals": 2,
-          "mappings": [],
-          "max": 100,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "index": 0,
-                "value": null
-              },
-              {
-                "color": "#EAB839",
-                "index": 1,
-                "value": 40
-              },
-              {
-                "color": "red",
-                "index": 2,
-                "value": 80
-              }
-            ]
-          },
-          "unit": "percent"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 4,
-        "x": 12,
-        "y": 41
-      },
-      "id": 300,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "11.1.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "edslwx44a3t34d"
-          },
-          "editorMode": "code",
-          "expr": "(adguard_queries_blocked{server=\"https://dns2.maxens.org\"}/ adguard_queries{server=\"https://dns2.maxens.org\"}) * 100",
-          "format": "table",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "title": "% Blocked",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "edslwx44a3t34d"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "Stopped"
-                },
-                "1": {
-                  "text": "Enabled"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "max": 1,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "dark-green",
-                "value": null
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 4,
-        "x": 16,
-        "y": 41
-      },
-      "id": 303,
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "value",
-        "wideLayout": true
-      },
-      "pluginVersion": "11.1.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "edslwx44a3t34d"
-          },
-          "editorMode": "code",
-          "expr": "adguard_queries{instance=\"adguard_exporter:9618\", job=\"adguard\", server=\"https://dns2.maxens.org\"}",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "AdguardHome Queries",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "edslwx44a3t34d"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "decimals": 1,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 4,
-        "x": 20,
-        "y": 41
-      },
-      "hideTimeOverride": false,
-      "id": 294,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": false
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "11.1.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "edslwx44a3t34d"
-          },
-          "disableTextWrap": false,
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "adguard_queries{instance=\"adguard_exporter:9618\", job=\"adguard\", server=\"https://dns2.maxens.org\"}",
-          "format": "table",
-          "fullMetaSearch": false,
-          "hide": false,
-          "includeNullMetadata": true,
-          "instant": false,
-          "interval": "",
-          "legendFormat": "{{Queries}}",
-          "range": true,
-          "refId": "A",
-          "useBackend": false
-        }
-      ],
-      "title": "AdguardHome Queries Compute2",
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "edslwx44a3t34d"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "decimals": 0,
-          "mappings": [],
-          "unit": "short"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 6,
-        "x": 12,
-        "y": 46
-      },
-      "id": 301,
-      "maxDataPoints": 3,
-      "options": {
-        "displayLabels": [],
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "right",
-          "showLegend": true,
-          "values": [
-            "percent"
-          ]
-        },
-        "pieType": "donut",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "edslwx44a3t34d"
-          },
-          "editorMode": "code",
-          "expr": "topk(10, increase(adguard_top_queried_domains{server=\"https://dns2.maxens.org\"}[$__range]))",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "{{domain}}",
-          "refId": "A"
-        }
-      ],
-      "title": "Top Queries by Domain",
-      "type": "piechart"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "edslwx44a3t34d"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "decimals": 0,
-          "mappings": [],
-          "unit": "short"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 6,
-        "x": 18,
-        "y": 46
-      },
-      "id": 302,
-      "maxDataPoints": 3,
-      "options": {
-        "displayLabels": [],
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "right",
-          "showLegend": true,
-          "values": [
-            "percent"
-          ]
-        },
-        "pieType": "donut",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "edslwx44a3t34d"
-          },
-          "editorMode": "code",
-          "expr": "topk(10, increase(adguard_top_clients{server=\"https://dns2.maxens.org\"}[$__range]))",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "{{client}}",
-          "refId": "A"
-        }
-      ],
-      "title": "Top Clients",
-      "type": "piechart"
     },
     {
       "collapsed": false,
@@ -2895,8 +2317,9 @@
     },
     {
       "datasource": {
+        "name": "Raspberry",
         "type": "prometheus",
-        "uid": "ddslz84q0abcwd"
+        "uid": "be1gmupha7qiod"
       },
       "description": "",
       "fieldConfig": {
@@ -2920,8 +2343,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -2955,12 +2377,12 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.1.0",
+      "pluginVersion": "11.2.2+security-01",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ddslz84q0abcwd"
+            "uid": "be1gmupha7qiod"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -2978,8 +2400,9 @@
     },
     {
       "datasource": {
+        "name": "Raspberry",
         "type": "prometheus",
-        "uid": "ddslz84q0abcwd"
+        "uid": "be1gmupha7qiod"
       },
       "description": "",
       "fieldConfig": {
@@ -3005,8 +2428,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "rgba(50, 172, 45, 0.97)",
-                "value": null
+                "color": "rgba(50, 172, 45, 0.97)"
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
@@ -3046,12 +2468,12 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.1.0",
+      "pluginVersion": "11.2.2+security-01",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ddslz84q0abcwd"
+            "uid": "be1gmupha7qiod"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -3070,8 +2492,9 @@
     },
     {
       "datasource": {
+        "name": "Raspberry",
         "type": "prometheus",
-        "uid": "ddslz84q0abcwd"
+        "uid": "be1gmupha7qiod"
       },
       "description": "",
       "fieldConfig": {
@@ -3097,8 +2520,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "rgba(50, 172, 45, 0.97)",
-                "value": null
+                "color": "rgba(50, 172, 45, 0.97)"
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
@@ -3136,12 +2558,12 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.1.0",
+      "pluginVersion": "11.2.2+security-01",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ddslz84q0abcwd"
+            "uid": "be1gmupha7qiod"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -3161,8 +2583,9 @@
     },
     {
       "datasource": {
+        "name": "Raspberry",
         "type": "prometheus",
-        "uid": "ddslz84q0abcwd"
+        "uid": "be1gmupha7qiod"
       },
       "description": "",
       "fieldConfig": {
@@ -3178,8 +2601,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "rgba(50, 172, 45, 0.97)",
-                "value": null
+                "color": "rgba(50, 172, 45, 0.97)"
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
@@ -3218,12 +2640,12 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.1.0",
+      "pluginVersion": "11.2.2+security-01",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ddslz84q0abcwd"
+            "uid": "be1gmupha7qiod"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -3239,7 +2661,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ddslz84q0abcwd"
+            "uid": "be1gmupha7qiod"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -3259,8 +2681,9 @@
     },
     {
       "datasource": {
+        "name": "Raspberry",
         "type": "prometheus",
-        "uid": "ddslz84q0abcwd"
+        "uid": "be1gmupha7qiod"
       },
       "description": "Non available RAM memory",
       "fieldConfig": {
@@ -3275,131 +2698,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "decimals": 1,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "#EF843C",
-                "value": 60
-              },
-              {
-                "color": "#E24D42",
-                "value": 70
-              },
-              {
-                "color": "red",
-                "value": 80
-              },
-              {
-                "color": "#EAB839",
-                "value": 90
-              },
-              {
-                "color": "#6ED0E0",
-                "value": 100
-              }
-            ]
-          },
-          "unit": "celsius"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 13,
-        "w": 14,
-        "x": 0,
-        "y": 60
-      },
-      "hideTimeOverride": false,
-      "id": 282,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "11.1.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "ddslz84q0abcwd"
-          },
-          "disableTextWrap": false,
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "node_hwmon_temp_celsius",
-          "format": "table",
-          "fullMetaSearch": false,
-          "hide": false,
-          "includeNullMetadata": true,
-          "instant": false,
-          "interval": "",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A",
-          "useBackend": false
-        }
-      ],
-      "title": "Temperature Raspberry",
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "ddslz84q0abcwd"
-      },
-      "description": "Non available RAM memory",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 0,
             "gradientMode": "none",
@@ -3431,8 +2730,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -3441,9 +2739,9 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
-        "w": 10,
-        "x": 14,
+        "h": 11,
+        "w": 12,
+        "x": 0,
         "y": 60
       },
       "hideTimeOverride": false,
@@ -3465,7 +2763,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ddslz84q0abcwd"
+            "uid": "be1gmupha7qiod"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -3486,9 +2784,135 @@
       "title": "CPU Busy Raspberry",
       "transparent": true,
       "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "name": "Raspberry",
+        "type": "prometheus",
+        "uid": "be1gmupha7qiod"
+      },
+      "description": "Non available RAM memory",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 1,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "#EF843C",
+                "value": 60
+              },
+              {
+                "color": "#E24D42",
+                "value": 70
+              },
+              {
+                "color": "red",
+                "value": 80
+              },
+              {
+                "color": "#EAB839",
+                "value": 90
+              },
+              {
+                "color": "#6ED0E0",
+                "value": 100
+              }
+            ]
+          },
+          "unit": "celsius"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 12,
+        "y": 60
+      },
+      "hideTimeOverride": false,
+      "id": 282,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.1.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "be1gmupha7qiod"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "node_hwmon_temp_celsius",
+          "format": "table",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "Temperature Raspberry",
+      "transparent": true,
+      "type": "timeseries"
     }
   ],
-  "refresh": "1m",
+  "refresh": "5s",
   "revision": 1,
   "schemaVersion": 39,
   "tags": [],
@@ -3628,6 +3052,6 @@
   "timezone": "browser",
   "title": "Main",
   "uid": "rYdddlPWk",
-  "version": 36,
+  "version": 9,
   "weekStart": ""
 }
