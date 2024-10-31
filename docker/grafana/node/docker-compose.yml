@@ -45,6 +45,7 @@ services:
   adguard-exporter:
     container_name: adguard_exporter
     network_mode: nginx-proxy-manager_default
+    restart: always
     environment:
       - ADGUARD_SERVERS=https://dns1.maxens.org
       - ADGUARD_USERNAMES=user 
