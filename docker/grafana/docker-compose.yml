@@ -5,6 +5,7 @@ services:
     image: grafana/grafana:latest
     network_mode: nginx-proxy-manager_default
     container_name: grafana
+    restart: unless-stopped
     ports:
       - 4100:3000
     environment:
