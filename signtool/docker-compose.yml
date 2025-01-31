@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  signtools:
+    container_name: signtools
+    image: signtools/signtools
+    restart: unless-stopped
+    network_mode: nginx-proxy-manager_default
+    ports:
+      - 9093:8080
+    volumes:
+      - /docker/signtool/signer-cfg.yml:/signer-cfg.yml
+      - /docker/signtool/data:/data
