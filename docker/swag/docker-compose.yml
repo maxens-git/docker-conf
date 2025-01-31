@@ -1,0 +1,33 @@
+---
+services:
+  swag:
+    image: lscr.io/linuxserver/swag:latest
+    container_name: swag
+    network_mode: nginx-proxy-manager_default
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PUID=1001
+      - PGID=1001
+      - TZ=Europe/Paris
+      - URL=maxens.org
+      - VALIDATION=http
+      - SUBDOMAINS=beszel,ntfy
+      #- CERTPROVIDER= #optional
+      - DNSPLUGIN=cloudflare #optional
+      #- PROPAGATION= #optional
+      #- EMAIL= #optional
+      #- ONLY_SUBDOMAINS=false #optional
+      #- EXTRA_DOMAINS=maxens.eu
+      - STAGING=false #optional
+      #- DISABLE_F2B= #optional
+      - SWAG_AUTORELOAD=true #optional
+      #- SWAG_AUTORELOAD_WATCHLIST= #optional
+      - DOCKER_MODS=linuxserver/mods:swag-dashboard
+    volumes:
+      - /docker/swag/config:/config
+    ports:
+      - 443:443
+      - 80:80 #optional
+      - 81:81
+    restart: unless-stopped
