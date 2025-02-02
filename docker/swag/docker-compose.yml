@@ -11,23 +11,25 @@ services:
       - PGID=1001
       - TZ=Europe/Paris
       - URL=maxens.org
-      - VALIDATION=http
-      - SUBDOMAINS=beszel,ntfy
+      #- VALIDATION=http
+      - SUBDOMAINS=wildcard #beszel,ntfy,up,auth,docker,grafana,maps,swag #wildcard
       #- CERTPROVIDER= #optional
+      - VALIDATION=dns
       - DNSPLUGIN=cloudflare #optional
+      #set cloudflare api key in /config/dns-conf/cloudflare.ini
       #- PROPAGATION= #optional
-      #- EMAIL= #optional
+      - EMAIL=admin@maxens.org #optional
       #- ONLY_SUBDOMAINS=false #optional
       #- EXTRA_DOMAINS=maxens.eu
       - STAGING=false #optional
       #- DISABLE_F2B= #optional
       - SWAG_AUTORELOAD=true #optional
       #- SWAG_AUTORELOAD_WATCHLIST= #optional
-      - DOCKER_MODS=linuxserver/mods:swag-dashboard
+      #- DOCKER_MODS=linuxserver/mods:swag-dashboard #Separer les mods par des barres verticales
     volumes:
       - /docker/swag/config:/config
     ports:
       - 443:443
       - 80:80 #optional
-      - 81:81
+      #- 81:81
     restart: unless-stopped
