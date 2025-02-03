@@ -1,0 +1,9 @@
+filenames:
+  - /var/log/nginx/*.log
+labels:
+  type: nginx
+---
+filenames:
+  - /var/log/authelia/authelia.log
+labels:
+  type: authelia
