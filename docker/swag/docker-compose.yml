@@ -30,9 +30,10 @@ services:
       - DOCKER_MODS=ghcr.io/linuxserver/mods:swag-crowdsec
       - CROWDSEC_API_KEY=random_key_la_meme
       - CROWDSEC_LAPI_URL=http://crowdsec:8080
+      ## https://www.google.com/recaptcha/admin/ ##
       #- CROWDSEC_CAPTCHA_PROVIDER=recaptcha
-      #- CROWDSEC_SITE_KEY=REDACTED_SITE_KEY
-      #- CROWDSEC_SECRET_KEY=REDACTED_SECRET_KEY
+      #- CROWDSEC_SITE_KEY=key
+      #- CROWDSEC_SECRET_KEY=key
     networks:
       crowdsec:
     volumes:
