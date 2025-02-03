@@ -1,35 +1,66 @@
----
+version: '3'
+
 services:
+  authelia:
+    container_name: "authelia"
+    image: "authelia/authelia:latest"
+    restart: unless-stopped
+    networks:
+      crowdsec:
+    ports:
+      - 9091:9091
+    volumes:
+      - /docker/authelia/config:/config
+      - /docker/authelia/logs:/opt
+
   swag:
     image: lscr.io/linuxserver/swag:latest
     container_name: swag
-    network_mode: nginx-proxy-manager_default
-    cap_add:
-      - NET_ADMIN
     environment:
       - PUID=1001
       - PGID=1001
       - TZ=Europe/Paris
       - URL=maxens.org
-      #- VALIDATION=http
-      - SUBDOMAINS=wildcard #beszel,ntfy,up,auth,docker,grafana,maps,swag #wildcard
-      #- CERTPROVIDER= #optional
+      - SUBDOMAINS=wildcard
       - VALIDATION=dns
-      - DNSPLUGIN=cloudflare #optional
-      #set cloudflare api key in /config/dns-conf/cloudflare.ini
-      #- PROPAGATION= #optional
-      - EMAIL=admin@maxens.org #optional
-      #- ONLY_SUBDOMAINS=false #optional
-      #- EXTRA_DOMAINS=maxens.eu
-      - STAGING=false #optional
-      #- DISABLE_F2B= #optional
+      - DNSPLUGIN=cloudflare
+      - EMAIL=admin@maxens.org
       - SWAG_AUTORELOAD=true #optional
-      #- SWAG_AUTORELOAD_WATCHLIST= #optional
-      #- DOCKER_MODS=linuxserver/mods:swag-dashboard #Separer les mods par des barres verticales
+      - DISABLE_F2B=true
+      - DOCKER_MODS=ghcr.io/linuxserver/mods:swag-crowdsec
+      - CROWDSEC_API_KEY=random_key_la_meme
+      - CROWDSEC_LAPI_URL=http://crowdsec:8080
+      #- CROWDSEC_CAPTCHA_PROVIDER=recaptcha
+      #- CROWDSEC_SITE_KEY=REDACTED_SITE_KEY
+      #- CROWDSEC_SECRET_KEY=REDACTED_SECRET_KEY
+    networks:
+      crowdsec:
     volumes:
-      - /docker/swag/config:/config
+      - /docker/swag/config:/config #- /opt/appdata/swag:/config
     ports:
+      - 80:80
       - 443:443
-      - 80:80 #optional
-      #- 81:81
     restart: unless-stopped
+    security_opt:
+      - no-new-privileges=true
+  crowdsec:
+    image: docker.io/crowdsecurity/crowdsec:latest
+    container_name: crowdsec
+    environment:
+      - GID=1001
+      - BOUNCER_KEY_SWAG=random_key_la_meme
+      - COLLECTIONS=crowdsecurity/nginx crowdsecurity/http-cve crowdsecurity/whitelist-good-actors LePresidente/authelia
+    volumes:
+      - /docker/crowdsec/data:/var/lib/crowdsec/data:rw
+      - /docker/crowdsec/config:/etc/crowdsec:rw
+      - /docker/swag/config/log/nginx:/var/log/nginx:ro #- /opt/appdata/swag/log/nginx:/var/log/swag:ro 
+      - /docker/authelia/logs/authelia.log:/var/log/authelia/authelia.log:ro
+    networks:
+      crowdsec:
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges=true
+
+networks:
+  crowdsec:
+    driver: bridge
