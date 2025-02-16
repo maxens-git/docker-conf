@@ -8,7 +8,7 @@ services:
       - '8090:8090'
     volumes:
       - /docker/beszel/data:/beszel_data
-      
+    #ntfy notification generic+https://ntfy.maxens.org/TOPIC?@authorization=Bearer+TOKEN
   beszel-agent:
     image: 'henrygd/beszel-agent'
     container_name: 'beszel-agent'
