@@ -9,7 +9,7 @@ if (!isset($variable)) {
 }
 
 // Remplacer la variable dans l'URL de la page web
-$url = "https://api.alldebrid.com/v4/link/unlock?agent=php&apikey=APIKEY&link=" . $variable;
+$url = "https://api.alldebrid.com/v4/link/unlock?agent=php&apikey=REDACTED_API_KEY&link=" . $variable;
 
 // Obtenir le contenu de la page web
 $contenu = file_get_contents($url);
@@ -32,11 +32,23 @@ function parse_api_response($api_response) {
   }
 }
 
-$lienseul = parse_api_response($contenu);
+function getUserIP() {
+  if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+      return $_SERVER['HTTP_CLIENT_IP'];
+  } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+      return explode(',', $_SERVER['HTTP_X_FORWARDED_FOR'])[0]; // Prend la première IP si plusieurs sont listées
+  } else {
+      return $_SERVER['REMOTE_ADDR'];
+  }
+}
 
+$lienseul = parse_api_response($contenu);
+$ip = getUserIP();
 
 $date = date('Y-m-d H:i:s', $_SERVER['REQUEST_TIME']);
-$vartxt = $date." , ". $lienseul;
+//$vartxt = $date." , ". $lienseul;
+$vartxt = $date . " , " . $ip . " , " . $lienseul;
+
 $myfile = file_put_contents('liens.txt', $vartxt.PHP_EOL , FILE_APPEND);
 
 if ($lienseul) {
