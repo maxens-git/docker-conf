@@ -1,0 +1,13 @@
+services:
+  roundcubemail:
+    network_mode: swag_crowdsec
+    container_name: roundcube
+    restart: unless-stopped
+    environment:
+      - ROUNDCUBEMAIL_DEFAULT_HOST=ssl://mail.maxens.org
+      - ROUNDCUBEMAIL_DEFAULT_PORT=993
+      - ROUNDCUBEMAIL_SMTP_SERVER=tls://mail.maxens.org
+      - ROUNDCUBEMAIL_SMTP_PORT=587
+    ports:
+      - 8543:80
+    image: roundcube/roundcubemail
