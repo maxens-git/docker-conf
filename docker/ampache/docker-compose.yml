@@ -1,12 +1,16 @@
 version: '3.3'
 services:
-    ampache:
-        container_name: ampache
-        labels:
-            - "diun.enable=true"
-        #network_mode: nginx-proxy-manager_default
-        volumes:
-            - '/home/maxens/ampache:/media:ro'
-        ports:
-            - '8100:80'
-        image: 'ampache/ampache:latest'
+  ampache:
+    image: ampache/ampache:latest
+    container_name: ampache
+    restart: unless-stopped
+    network_mode: swag_crowdsec
+    ports:
+      - 8100:80
+    volumes:
+      - /docker/ampache/config:/var/www/config
+      - /docker/ampache/log:/var/log/ampache
+      - /home/ubuntu/Music:/media
+      - /docker/ampache/mysql:/var/lib/mysql
+
+      #sudo chown www-data:www-data /docker/ampache/config -R
