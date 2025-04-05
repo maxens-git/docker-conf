@@ -5,14 +5,14 @@ services:
             - '/docker/minecraft-spigot/:/data'
         restart: unless-stopped
         environment:
-            - TYPE=SPIGOT
+            - TYPE=PAPER
             - EULA=TRUE
-            - VERSION=${version}
-            #- MODE=survival
+            - VERSION=1.21
+            - MODE=survival
             - EXEC_DIRECTLY=true
-            - MEMORY=${memory}
+            - MEMORY=5G
             - MAX_PLAYERS=50
-            - ONLINE_MODE=${premium_only}
+            - ONLINE_MODE=true
             #RCON
             #- ENABLE_RCON=${rcon_enable}
             #- RCON_PASSWORD=${rcon_pass}
@@ -21,6 +21,6 @@ services:
             #- '8123:8123' dynmap
             #- '8085:8085' webui
         container_name: minecraft-spigot
-        network_mode: nginx-proxy-manager_default
+        network_mode: swag_crowdsec
         image: itzg/minecraft-server
 
