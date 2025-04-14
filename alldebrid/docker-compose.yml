@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  webserver:
+    image: php:apache
+    container_name: debrid
+    restart: unless-stopped
+    ports:
+      - "8110:80"
+    volumes:
+      - /docker/debrid/web:/var/www/html
+
+  db:
+    image: mysql:latest
+    container_name: mysql
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - /docker/debrid/mysql/:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: REDACTED_PASSWORD
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin
+    restart: always
+    ports:
+      - 8107:80
+    environment:
+      - UPLOAD_LIMIT=512M
+      - MAX_EXECUTION_TIME=10000
+      - PMA_ARBITRARY=1 #1 pour se connecter a une base de donnée externe
+      - PMA_HOST=mysql
+      
