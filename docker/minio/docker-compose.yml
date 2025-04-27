@@ -13,6 +13,8 @@ services:
       - MINIO_ROOT_USER=${MINIO_ACCESS_KEY}
       - MINIO_ROOT_PASSWORD=${MINIO_SECRET_KEY}
       - MINIO_DEFAULT_BUCKETS=${MINIO_DEFAULT_BUCKETS}
+      - MINIO_SERVER_URL=https://s3.maxens.org
+      - MINIO_BROWSER_REDIRECT_URL=https://minio.maxens.org
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
       interval: 30s
