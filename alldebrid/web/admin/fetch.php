@@ -26,7 +26,7 @@ if(isset($_POST["query"]))
 else
 {
         $query = "
-        SELECT * FROM liens ORDER BY date DESC";
+        SELECT * FROM liens ORDER BY id DESC";
 }
 $result = mysqli_query($connect, $query);
 if(mysqli_num_rows($result) > 0)
