@@ -1,86 +1,68 @@
 <?php
+session_start();
 
-// Récupérer la variable GET
-$variable = $_GET["lien"];
-
-// Si la variable n'est pas définie, afficher un message d'erreur
-if (!isset($variable)) {
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
     exit;
 }
 
-// Remplacer la variable dans l'URL de la page web
-$url = "https://api.alldebrid.com/v4/link/unlock?agent=php&apikey=REDACTED_API_KEY&link=" . $variable;
-
-// Obtenir le contenu de la page web
-$contenu = file_get_contents($url);
-
-
-// Déclaration de la fonction pour parser le JSON et extraire le lien
-function parse_api_response($api_response) {
-  // Décodage du JSON en objet PHP
-  $data = json_decode($api_response, true);
-
-  // Vérification du statut de la réponse
-  if ($data['status'] === 'success') {
-    // Extraction du lien depuis l'objet data
-    $lienp = $data['data']['link'];
-
-    // Retour du lien
-    return $lienp;
-  } else {
-    return null;
-  }
-}
-
-function getUserIP() {
-  if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-      return $_SERVER['HTTP_CLIENT_IP'];
-  } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-      return explode(',', $_SERVER['HTTP_X_FORWARDED_FOR'])[0]; // Prend la première IP si plusieurs sont listées
-  } else {
-      return $_SERVER['REMOTE_ADDR'];
-  }
-}
-
-$lienseul = parse_api_response($contenu);
-$ip = getUserIP();
-
-$date = date('Y-m-d H:i:s', $_SERVER['REQUEST_TIME']);
-
-
 // Connexion à la base de données
-$host = 'mysql:3306'; // Adresse du serveur MySQL
-$dbname = 'debrid'; // Nom de la base de données
-$username = 'root'; // Nom d'utilisateur MySQL
-$password = 'REDACTED_PASSWORD'; // Mot de passe MySQL
+$host = '192.168.1.47:3306';
+$dbname = 'debrid';
+$username = 'root';
+$password = 'REDACTED_PASSWORD';
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     die("Erreur de connexion : " . $e->getMessage());
 }
 
-// Données à insérer
-$date = date('Y-m-d H:i:s'); // Date actuelle
-$ip = $ip; // Adresse IP du client
-$lien = $lienseul;
-
-// Requête d'insertion
-$sql = "INSERT INTO liens (`date`, `ip`, `lien`) VALUES (:date, :ip, :lien)";
-$stmt = $pdo->prepare($sql);
-
-// Exécution de la requête avec les valeurs
-$stmt->execute([
-    ':date' => $date,
-    ':ip' => $ip,
-    ':lien' => $lien
-]);
-
-if ($lienseul) {
-  header("Location: $lienseul");
-  die();
+// Récupération et validation du paramètre GET 'lien'
+if (!isset($_GET['lien']) || !filter_var($_GET['lien'], FILTER_VALIDATE_URL)) {
+    exit('Paramètre "lien" invalide ou manquant.');
 }
 
+$linkToUnlock = $_GET['lien'];
+$apikey = 'REDACTED_API_KEY'; // ⚠️ À sécuriser (ne pas exposer en clair)
+$apiUrl = "https://api.alldebrid.com/v4/link/unlock?agent=php&apikey=$apikey&link=" . urlencode($linkToUnlock);
 
+$contenu = @file_get_contents($apiUrl);
+if ($contenu === false) {
+    exit('Erreur lors de la récupération du contenu.');
+}
+
+// Fonction utilitaire pour parser les champs
+function parse_json_field($json, $field) {
+    $data = json_decode($json, true);
+    return ($data['status'] ?? '') === 'success' && isset($data['data'][$field]) ? $data['data'][$field] : null;
+}
+function parse_size_in_go($json) {
+    $size = parse_json_field($json, 'filesize');
+    return is_numeric($size) ? round($size / 1073741824, 2) : null;
+}
+
+$lienseul = parse_json_field($contenu, 'link');
+$nomfichier = parse_json_field($contenu, 'filename');
+$taille = parse_size_in_go($contenu);
+$ip = $_SERVER['HTTP_CLIENT_IP'] ?? $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
+$user_agent = $_SERVER['HTTP_USER_AGENT'] ?? 'Unknown';
+$date = date('Y-m-d H:i:s');
+
+if ($lienseul && filter_var($lienseul, FILTER_VALIDATE_URL)) {
+    $stmt = $pdo->prepare("INSERT INTO liens (`date`, `ip`, `nom`, `lien`, `taille`, `user-agent`) VALUES (:date, :ip, :nom, :lien, :taille, :user_agent)");
+    $stmt->execute([
+        ':date' => $date,
+        ':ip' => $ip,
+        ':nom' => $nomfichier ?? 'Inconnu',
+        ':lien' => $lienseul,
+        ':taille' => $taille,
+        ':user_agent' => $user_agent
+    ]);
+    header("Location: $lienseul");
+    exit;
+} else {
+    exit('Lien invalide ou indisponible.');
+}
 ?>
