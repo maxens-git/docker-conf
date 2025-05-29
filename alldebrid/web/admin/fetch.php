@@ -8,9 +8,6 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 
-
-
-
 $connect = mysqli_connect("mysql", "root", "REDACTED_PASSWORD", "debrid");
 $output = '';
 if(isset($_POST["query"]))
@@ -20,8 +17,10 @@ if(isset($_POST["query"]))
         SELECT * FROM liens
         WHERE date LIKE '%".$search."%'
         OR ip LIKE '%".$search."%'
+	OR nom LIKE '%".$search."%'
         OR lien LIKE '%".$search."%'
-        ";
+        OR user-agent LIKE '%".$search."%'
+        ORDER BY id DESC";
 }
 else
 {
@@ -36,7 +35,9 @@ if(mysqli_num_rows($result) > 0)
                                                 <tr>
                                                         <th>Date</th>
                                                         <th>IP</th>
-                                                        <th>Lien</th>
+                                                        <th>Nom</th>
+                                                        <th>Taille</th>
+                                                        <th>User-agent</th>
                                                 </tr>';
         while($row = mysqli_fetch_array($result))
         {
@@ -44,7 +45,9 @@ if(mysqli_num_rows($result) > 0)
                         <tr>
                                 <td>'.$row["date"].'</td>
                                 <td><a href="http://ip-api.com/json/' . $row["ip"] . '">' . $row["ip"] . '</a></td>
-                                <td><a href='.$row["lien"].'>'.$row["lien"].'</a></td>
+                                <td><a href='.$row["lien"].'>'.$row["nom"].'</a></td>
+                                <td>'.$row["taille"].'</td>
+                                <td style="white-space: nowrap;">'.$row["user-agent"].'</td>
                         </tr>
                 ';
         }
