@@ -1,10 +1,4 @@
 <?php
-session_start();
-
-if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
-    exit;
-}
 
 // Connexion à la base de données
 $host = '192.168.1.47:3306';
@@ -51,15 +45,17 @@ $user_agent = $_SERVER['HTTP_USER_AGENT'] ?? 'Unknown';
 $date = date('Y-m-d H:i:s');
 
 if ($lienseul && filter_var($lienseul, FILTER_VALIDATE_URL)) {
-    $stmt = $pdo->prepare("INSERT INTO liens (`date`, `ip`, `nom`, `lien`, `taille`, `user-agent`) VALUES (:date, :ip, :nom, :lien, :taille, :user_agent)");
+    $stmt = $pdo->prepare("INSERT INTO liens (`date`, `ip`, `nom`, `lien`, `taille`, `user-agent`, `lien-base`) VALUES (:date, :ip, :nom, :lien, :taille, :user_agent, :lien_base)");
     $stmt->execute([
         ':date' => $date,
         ':ip' => $ip,
         ':nom' => $nomfichier ?? 'Inconnu',
         ':lien' => $lienseul,
         ':taille' => $taille,
-        ':user_agent' => $user_agent
+        ':user_agent' => $user_agent,
+	    ':lien_base' => $linkToUnlock
     ]);
+
     header("Location: $lienseul");
     exit;
 } else {
