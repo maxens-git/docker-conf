@@ -46,7 +46,7 @@ function parse_size_in_go($json) {
 $lienseul = parse_json_field($contenu, 'link');
 $nomfichier = parse_json_field($contenu, 'filename');
 $taille = parse_size_in_go($contenu);
-$ip = $_SERVER['HTTP_CLIENT_IP'] ?? $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
+$ip = $_SERVER['HTTP_CLIENT_IP'] ?? explode(',', $_SERVER['HTTP_X_FORWARDED_FOR'])[0] ?? $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
 $user_agent = $_SERVER['HTTP_USER_AGENT'] ?? 'Unknown';
 $date = date('Y-m-d H:i:s');
 
