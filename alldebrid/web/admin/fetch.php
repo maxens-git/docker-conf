@@ -46,7 +46,7 @@ if(mysqli_num_rows($result) > 0)
                                 <td>'.$row["date"].'</td>
                                 <td><a href="http://ip-api.com/json/' . $row["ip"] . '">' . $row["ip"] . '</a></td>
                                 <td><a href='.$row["lien"].'>'.$row["nom"].'</a></td>
-                                <td>'.$row["taille"].'</td>
+                                <td style="white-space: nowrap;">'.$row["taille"].' Go</td>
                                 <td style="white-space: nowrap;">'.$row["user-agent"].'</td>
                         </tr>
                 ';
