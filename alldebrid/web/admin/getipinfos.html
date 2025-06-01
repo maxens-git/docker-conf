@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Infos IP</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .status-success { color: green; font-weight: bold; }
+        .status-fail { color: red; font-weight: bold; }
+        p { margin: 5px 0; }
+    </style>
+</head>
+<body>
+
+<h2>Infos IP</h2>
+<div id="result"></div>
+
+<script>
+function getIpFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('ip');
+}
+
+async function getIpInfo(ip) {
+    if (!ip) {
+        document.getElementById('result').innerHTML = '<p class="status-fail">Erreur : aucune IP spécifiée dans l\'URL (ex: ?ip=8.8.8.8)</p>';
+        return;
+    }
+
+    try {
+        const response = await fetch(`https://ipwhois.app/json/${ip}`);
+        const data = await response.json();
+
+        if (data.success !== false) {
+            let html = `<p class="status-success">Statut : succès</p>`;
+            html += `<p><strong>IP :</strong> ${data.ip}</p>`;
+            html += `<p><strong>Type :</strong> ${data.type}</p>`;
+            html += `<p><strong>Continent :</strong> ${data.continent} (${data.continent_code})</p>`;
+            html += `<p><strong>Pays :</strong> ${data.country} (${data.country_code})</p>`;
+            html += `<p><strong>Région :</strong> ${data.region} (${data.region_code})</p>`;
+            html += `<p><strong>Ville :</strong> ${data.city}</p>`;
+            html += `<p><strong>Code Postal :</strong> ${data.postal}</p>`;
+            html += `<p><strong>Latitude :</strong> ${data.latitude}</p>`;
+            html += `<p><strong>Longitude :</strong> ${data.longitude}</p>`;
+            html += `<p><strong>Fournisseur (ISP) :</strong> ${data.isp}</p>`;
+            html += `<p><strong>Organisation :</strong> ${data.org}</p>`;
+            html += `<p><strong>ASN :</strong> ${data.asn}</p>`;
+            html += `<p><strong>Fuseau Horaire :</strong> ${data.timezone}</p>`;
+            document.getElementById('result').innerHTML = html;
+        } else {
+            document.getElementById('result').innerHTML = `<p class="status-fail">Erreur : ${data.message}</p>`;
+        }
+    } catch (error) {
+        document.getElementById('result').innerHTML = `<p class="status-fail">Erreur : ${error.message}</p>`;
+    }
+}
+
+const ip = getIpFromUrl();
+getIpInfo(ip);
+</script>
+
+</body>
+</html>
