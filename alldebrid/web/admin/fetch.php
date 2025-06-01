@@ -39,16 +39,16 @@ if(mysqli_num_rows($result) > 0)
                                                         <th>Taille</th>
                                                         <th>User-agent</th>
                                                 </tr>';
-        while($row = mysqli_fetch_array($result))
-        {
+        while($row = mysqli_fetch_array($result)) {
+                $nomAffiche = empty($row["nom"]) ? $row["lien"] : $row["nom"];
                 $output .= '
-                        <tr>
-                                <td>'.$row["date"].'</td>
-                                <td><a href="http://ip-api.com/json/' . $row["ip"] . '">' . $row["ip"] . '</a></td>
-                                <td><a href='.$row["lien"].'>'.$row["nom"].'</a></td>
-                                <td style="white-space: nowrap;">'.$row["taille"].' Go</td>
-                                <td style="white-space: nowrap;">'.$row["user-agent"].'</td>
-                        </tr>
+                <tr>
+                        <td>'.$row["date"].'</td>
+                        <td><a href="https://debrid.maxens.org/admin/getipinfos.html?ip=' . $row["ip"] . '">' . $row["ip"] . '</a></td>
+                        <td><a href="'.$row["lien"].'">'.$nomAffiche.'</a></td>
+                        <td style="white-space: nowrap;">'.$row["taille"].' Go</td>
+                        <td style="white-space: nowrap;">'.$row["user-agent"].'</td>
+                </tr>
                 ';
         }
         echo $output;
