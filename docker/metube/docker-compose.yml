@@ -9,6 +9,7 @@ services:
     restart: unless-stopped
     environment:
       YTDL_OPTIONS: '{"cookiefile":"/cookies/cookies.txt"}' #On peut obtenir le fichier cookies.txt via l'extension firefox / chrome : cookies.txt
+      DELETE_FILE_ON_TRASHCAN: true
     ports:
       - "8106:8081"
     volumes:
