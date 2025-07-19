@@ -55,5 +55,5 @@ sudo docker run authelia authelia crypto rand --length 64 --charset alphanumeric
 ```
 ## Générer des certificats pour openid connect
 ```
-sudo docker run authelia/authelia:latest authelia crypto certificate rsa generate && cat private.pem && cat public.crt
+sudo docker run --rm -u "$(id -u):$(id -g)" -v "$(pwd)":/keys authelia/authelia:latest authelia crypto pair rsa generate --directory /keys
 ```
