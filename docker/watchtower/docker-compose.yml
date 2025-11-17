@@ -1,12 +1,12 @@
 services:
-    watchtower:
-        container_name: watchtower
-        command: --interval 3600
-        restart: unless-stopped
-        volumes:
-            - /var/run/docker.sock:/var/run/docker.sock
-        image: containrrr/watchtower
-        environment:
-            - WATCHTOWER_NOTIFICATIONS=shoutrrr
-            - WATCHTOWER_NOTIFICATION_SKIP_TITLE=True
-            - WATCHTOWER_NOTIFICATION_URL=generic+https://ntfy.maxens.org/watchtower?@authorization=Bearer+TOKEN #generer un token : ntfy token add maxens
+  watchtower:
+    container_name: watchtower
+    command: --interval 3600
+    restart: unless-stopped
+    image: nickfedor/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_NOTIFICATIONS=shoutrrr
+      - WATCHTOWER_NOTIFICATION_SKIP_TITLE=True
+      - WATCHTOWER_NOTIFICATION_URL=ntfy://:REDACTED_TOKEN@ntfy.maxens.org/watchtower?title=Watchtower%20M
