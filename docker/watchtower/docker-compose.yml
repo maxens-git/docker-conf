@@ -9,4 +9,4 @@ services:
     environment:
       - WATCHTOWER_NOTIFICATIONS=shoutrrr
       - WATCHTOWER_NOTIFICATION_SKIP_TITLE=True
-      - WATCHTOWER_NOTIFICATION_URL=ntfy://:REDACTED_TOKEN@ntfy.maxens.org/watchtower?title=Watchtower%20M
+      - WATCHTOWER_NOTIFICATION_URL=${WATCHTOWER_NOTIFICATION_URL}

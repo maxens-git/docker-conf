@@ -1,10 +1,10 @@
 <?php
 
 // Connexion à la base de données
-$host = '192.168.1.47:3306';
+$host = 'mysql:3306';
 $dbname = 'debrid';
 $username = 'root';
-$password = 'REDACTED_PASSWORD';
+$password = getenv('DB_PASSWORD');
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
@@ -19,7 +19,7 @@ if (!isset($_GET['lien']) || !filter_var($_GET['lien'], FILTER_VALIDATE_URL)) {
 }
 
 $linkToUnlock = $_GET['lien'];
-$apikey = 'REDACTED_API_KEY'; // ⚠️ À sécuriser (ne pas exposer en clair)
+$apikey = getenv('ALLDEBRID_API_KEY');
 $apiUrl = "https://api.alldebrid.com/v4/link/unlock?agent=php&apikey=$apikey&link=" . urlencode($linkToUnlock);
 
 $contenu = @file_get_contents($apiUrl);

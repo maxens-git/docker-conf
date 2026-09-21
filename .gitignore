@@ -1,0 +1,3 @@
+# Real environment files containing secrets — copy the matching .env.example
+# and fill in your own values instead of committing this file.
+.env

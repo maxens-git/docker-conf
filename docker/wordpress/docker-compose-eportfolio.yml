@@ -11,7 +11,7 @@ services:
     environment:
       WORDPRESS_DB_HOST: wordpress_db	
       WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: REDACTED_PASSWORD
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
       WORDPRESS_DB_NAME: wordpress
     volumes:
       - /docker/e-portfolio.github.io.wordpress/wordpress_data:/var/www/html
@@ -26,8 +26,8 @@ services:
     environment:
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
-      MYSQL_PASSWORD: REDACTED_PASSWORD
-      MYSQL_ROOT_PASSWORD: REDACTED_PASSWORD
+      MYSQL_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     volumes:
       - /docker/e-portfolio.github.io.wordpress/db_data:/var/lib/mysql
 

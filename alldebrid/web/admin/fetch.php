@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 
-$connect = mysqli_connect("mysql", "root", "REDACTED_PASSWORD", "debrid");
+$connect = mysqli_connect("mysql", "root", getenv('DB_PASSWORD'), "debrid");
 $output = '';
 if(isset($_POST["query"]))
 {

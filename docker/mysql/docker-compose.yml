@@ -14,7 +14,7 @@ services:
     volumes:
       - /docker/mysql/:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: REDACTED_PASSWORD
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
 
   phpmyadmin:
     image: phpmyadmin:latest

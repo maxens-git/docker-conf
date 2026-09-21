@@ -5,29 +5,29 @@
 - Raspberry:
     - Portainer:
         iocn: portainer.png
-        href: https://192.168.1.47:9443
+        href: https://192.168.1.X:9443
         description:
         container: portainer
         widget:
           type: portainer
-          url: https://192.168.1.47:9443
+          url: https://192.168.1.X:9443
           env: 2
           key: api
     - Immich:
-        href: https://maxens-immich.duckdns.org
+        href: https://your-immich.duckdns.org
         container: immich_server
         widget:
           type: immich
-          url: https://maxens-immich.duckdns.org
+          url: https://your-immich.duckdns.org
           key: api
     - Nginx proxy manager:
-        href: http://192.168.1.47:81
+        href: http://192.168.1.X:81
         container: npm
         widget:
           type: npm
-          url: http://192.168.1.47:81
-          username: maxens.verron@outlook.com
-          password: password
+          url: http://192.168.1.X:81
+          username: your@email.com
+          password: changeme
 
 - Oracle:
     - Minecraft:
@@ -35,12 +35,12 @@
         description:
         widget:
           type: minecraft
-          url: udp://129.158.222.17:25565
+          url: udp://your.server.ip:25565
 #    - Uptime-kuma:
  #       href:
   #      widget:
    #       type: uptimekuma
-    #      url: http://129.158.222.17:8050/
+    #      url: http://your.server.ip:8050/
      #     slug: statuspageslug
 
 - Others:

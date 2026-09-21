@@ -2,7 +2,7 @@
 $host = 'mysql';
 $db   = 'debrid';
 $user = 'root';
-$pass = 'REDACTED_PASSWORD';
+$pass = getenv('DB_PASSWORD');
 $port = '3306';
 $charset = 'utf8mb4';
 

@@ -5,6 +5,9 @@ services:
     image: php:apache
     container_name: debrid
     restart: unless-stopped
+    environment:
+      DB_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      ALLDEBRID_API_KEY: ${ALLDEBRID_API_KEY}
     ports:
       - "8110:80"
     volumes:
@@ -19,7 +22,7 @@ services:
     volumes:
       - /docker/debrid/mysql/:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: REDACTED_PASSWORD
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
 
   phpmyadmin:
     image: phpmyadmin:latest
